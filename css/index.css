@@ -1,43 +1,17 @@
 body{
-    background: url(../images/bg.svg);
-    color: #777;
+    /*background: url(../images/bg.svg);*/
 }
 .si-container{
     width: 800px;
     margin: auto;
 }
-.si-header{
-    text-align: center;
+
+.si-result .card{
+
 }
-.si-result{
-    min-height: 200px;
-    float: left;
-    width: 33%;
-    padding: 10px;
-}
-.si-result-img{
+.si-result .card-image{
     height: 200px;
-    width: 100%;:;
     overflow: hidden;
 }
-.si-result-img img{
-    width: 100%;
-    box-shadow: 0 1px 2px rgba(0, 0, 0, 0.5);
-}
-
-.si-result-text{
-
-}
-.si-result-text span{
-}
-.si-result-name{
-}
-.si-result-apt{
-
-}
-.si-result-time{
-
-}
-.si-result-desc{
-
+.si-result .card-image img{
 }
