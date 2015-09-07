@@ -1,9 +1,29 @@
 /**
  * Created by liyatang on 15/9/6.
  */
-angular.module('staffIntroduction', []).controller('AppCtrl', function ($scope) {
-    
-    
-}).controller('ResultCtrl', function ($scope) {
-    
-});
+(function () {
+    'use strict';
+
+    angular.module('staffIntroduction', ['ui.router']).config(function ($stateProvider, $urlRouterProvider) {
+
+        $urlRouterProvider.otherwise('/home');
+
+        $stateProvider.state('home', {
+            url: '/home',
+            controller: 'HomeCtrl',
+            templateUrl: 'views/home.html'
+        }).state('result', {
+            url: '/result',
+            controller: 'ResultCtrl',
+            templateUrl: 'views/result.html'
+        });
+    });
+
+
+
+    angular.module('staffIntroduction').controller('AppCtrl', function($scope){
+
+    });
+
+
+})();

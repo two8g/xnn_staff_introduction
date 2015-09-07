@@ -15,3 +15,16 @@ body{
 }
 .si-result .card-image img{
 }
+
+
+.si-home-container{
+
+}
+.si-home-img-container{
+    width:100px;
+    height: 80px;
+    overflow: hidden;
+}
+.si-home-introduction{
+    width: 200px;;
+}

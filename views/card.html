@@ -1,0 +1,14 @@
+<div class="card">
+    <div class="card-image waves-effect waves-block waves-light">
+        <img class="activator" src="images/2.jpg">
+    </div>
+    <div class="card-content">
+        <span class="card-title activator grey-text text-darken-4" ng-bind="card.name"></span>
+
+        <p>所在部门：<span ng-bind="card.department"></span></p>
+
+        <p>入职时间：<span ng-bind="card.entryTime | date:'yyyy-MM-dd'"></span></p>
+
+        <p>自我介绍：<span ng-bind="card.introduction"></span></p>
+    </div>
+</div>
