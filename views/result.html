@@ -6,13 +6,11 @@
             </div>
         </nav>
         <div class="si-result clearfix">
-
-            <div class="row">
-                <div class="col s4" ng-repeat="card in cards">
+            <div layout="row" layout-wrap>
+                <div flex="33" ng-repeat="card in cards">
                     <div card-directive ng-model="card"></div>
                 </div>
             </div>
         </div>
     </div>
-
 </div>

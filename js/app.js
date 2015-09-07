@@ -4,7 +4,7 @@
 (function () {
     'use strict';
 
-    angular.module('staffIntroduction', ['ui.router']).config(function ($stateProvider, $urlRouterProvider) {
+    angular.module('staffIntroduction', ['ui.router', 'ngMaterial']).config(function ($stateProvider, $urlRouterProvider) {
 
         $urlRouterProvider.otherwise('/home');
 
