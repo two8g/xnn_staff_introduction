@@ -1,0 +1,4 @@
+<div class="maltose-grid-edit" ng-dblclick="onEdit($event)">
+    <span ng-show="!edit">{{gridModel}}&nbsp;</span>
+    <input type="text" tabindex="-1" ng-model="gridModel" ng-show="edit" ng-blur="cancelEdit($event)" ng-keyup="onKey($event)" maltose-focus-on="maltoseGridEditInput"/>
+</div>

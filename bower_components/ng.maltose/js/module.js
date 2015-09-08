@@ -1,0 +1,1 @@
+angular.module('ng.maltose', ['ng', 'ngSanitize','ngMaterial','ng.maltose.sha256', 'ng.maltose.templates']);

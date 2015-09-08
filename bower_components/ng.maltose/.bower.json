@@ -1,0 +1,36 @@
+{
+  "name": "ng.maltose",
+  "homepage": "https://github.com/zlfe/ng.maltose",
+  "authors": [
+    "yatang.li <yatang.li@zuolin.com>"
+  ],
+  "license": "MIT",
+  "ignore": [
+    "**/.*",
+    "node_modules",
+    "bower_components",
+    "test",
+    "tests"
+  ],
+  "devDependencies": {
+    "fontawesome": "~4.3.0",
+    "underscore": "~1.8.3",
+    "jquery": "~2.1.4",
+    "angular-sanitize": "~1.4.0",
+    "bootstrap": "~3.3.5",
+    "angular": "1.4.0",
+    "angular-material": "~0.10.0",
+    "FileSaver": "*"
+  },
+  "version": "0.1.0",
+  "_release": "0.1.0",
+  "_resolution": {
+    "type": "version",
+    "tag": "v0.1.0",
+    "commit": "2b00bea8ac713dfe0ef6c13246c3ad05353014df"
+  },
+  "_source": "git://github.com/liyatang/ng.maltose.git",
+  "_target": "~0.1.0",
+  "_originalSource": "ng.maltose",
+  "_direct": true
+}

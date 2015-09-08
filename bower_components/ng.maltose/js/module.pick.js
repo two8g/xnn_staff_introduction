@@ -1,0 +1,1 @@
+angular.module('ng.maltose.pick', ['ng.maltose']);
