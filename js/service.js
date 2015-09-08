@@ -14,7 +14,7 @@
             introduction: '大家好，我叫李雅堂，可以叫我麦芽糖。家乡广东茂名，兴趣玩游戏和下厨。很高兴加入小农女和大家一起工作，多多指教。'
         }, {
             id: 1441583926154,
-            face: 'images/1.pg',
+            face: 'images/1.jpg',
             name: '李吉荣',
             department: '行政部',
             entryTime: new Date(),
@@ -41,6 +41,9 @@
             add: function(card){
                 card.id = getUniqueId();
                 CardsData.push(card);
+                return $q.when(card);
+            },
+            set: function (card) {
                 return $q.when(card);
             }
         };

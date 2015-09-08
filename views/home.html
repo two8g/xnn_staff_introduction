@@ -1,37 +1,11 @@
-<div>
+<div class="si-home">
     <div class="si-home-container">
-        <a class="waves-effect waves-light btn" ng-click="addCard()">添加</a>
 
-        <hr/>
+        <md-button class="md-primary md-raised" ng-click="addCard()">添加</md-button>
+
 
         <div>
-            <table>
-                <thead>
-                <tr>
-                    <th></th>
-                    <th>名字</th>
-                    <th>所在部门</th>
-                    <th>入职时间</th>
-                    <th>自我介绍</th>
-                    <th>图片</th>
-                    <th>操作</th>
-                </tr>
-                </thead>
-                <tbody>
-                <tr ng-repeat="card in cards">
-                    <td>
-                        <label><input type="checkbox"/></label></td>
-                    <td ng-bind="card.name"></td>
-                    <td ng-bind="card.department">技术部</td>
-                    <td ng-bind="card.entryTime | date:'yyyy-MM-dd'">2015</td>
-                    <td class="si-home-introduction" ng-bind="card.introduction">Hello</td>
-                    <td>
-                        <div class="si-home-img-container"><img class="responsive-img" src="images/2.jpg" alt=""/></div>
-                    </td>
-                    <td></td>
-                </tr>
-                </tbody>
-            </table>
+            <div maltose-grid config="gridData"></div>
         </div>
     </div>
 </div>

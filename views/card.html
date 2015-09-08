@@ -1,14 +1,39 @@
-<div class="ui-card">
-    <md-card>
-        <img class="activator" src="images/2.jpg">
-        <md-card-content>
-            <h2 ng-bind="card.name"></h2>
+<div class="si-card si-container">
 
-            <p>所在部门：<span ng-bind="card.department"></span></p>
+    <div layout="row" layout-wrap>
+        <div flex="33">
+            <div card-directive ng-model="card"></div>
+        </div>
+        <div flex="10"></div>
+        <div flex>
+            <form ng-submit="onSubmit()" novalidate>
+                <div class="form-group">
+                    <button type="button" id="uploadFile">Upload</button>
+                </div>
+                <md-input-container>
+                    <label>名字</label>
+                    <input type="text" ng-model="card.name"/>
+                </md-input-container>
 
-            <p>入职时间：<span ng-bind="card.entryTime | date:'yyyy-MM-dd'"></span></p>
+                <md-input-container>
+                    <label>所在部门</label>
+                    <input type="text" ng-model="card.department"/>
+                </md-input-container>
 
-            <p>自我介绍：<span ng-bind="card.introduction"></span></p>
-        </md-card-content>
-    </md-card>
+                <md-input-container>
+                    <label>入职时间</label>
+                    <input type="date" ng-model="card.entryTime"/>
+                </md-input-container>
+
+                <div class="form-group">
+                <textarea class="form-control" rows="5" ng-model="card.introduction"></textarea>
+                </div>
+
+                <div class="text-right">
+                    <md-button type="submit" class="md-primary md-raised">提交</md-button>
+                </div>
+            </form>
+        </div>
+    </div>
+
 </div>

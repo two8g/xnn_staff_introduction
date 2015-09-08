@@ -1,0 +1,14 @@
+<div class="ui-card">
+    <md-card>
+        <img class="activator" src="images/2.jpg">
+        <md-card-content>
+            <h2 ng-bind="card.name"></h2>
+
+            <p>所在部门：<span ng-bind="card.department"></span></p>
+
+            <p>入职时间：<span ng-bind="card.entryTime | date:'yyyy-MM-dd'"></span></p>
+
+            <p>自我介绍：<span ng-bind="card.introduction"></span></p>
+        </md-card-content>
+    </md-card>
+</div>

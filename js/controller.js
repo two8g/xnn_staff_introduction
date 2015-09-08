@@ -3,7 +3,7 @@
 
     var module = angular.module('staffIntroduction');
 
-    module.controller('HomeCtrl', function ($scope, DataService) {
+    module.controller('HomeCtrl', function ($scope, DataService, $state) {
 
 
         DataService.addCard = function () {
@@ -13,16 +13,67 @@
         };
 
 
-        getCards();
+        $scope.gridData = {
+            enableSelect: true,
+            columns: [
+                {field: 'id', name: 'id'},
+                {field: 'name', name: '名字'},
+                {field: 'department', name: '所在部门'},
+                {field: 'entryTime', name: '入职时间', render: renderTime},
+                {field: 'introduction', name: '自我介绍', style:'width: 200px;'},
+                {field: 'face', name: '图片', render: renderFace}
+            ],
+            actions: [{
+                type: 'btn',
+                html: '编辑',
+                action: onEdit
+            }],
+            getData: function () {
+                return getCards().then(function (data) {
+                    return _.sortBy(data, function (value) {
+                        return -value.id;
+                    });
+                });
+            }
+        };
 
         function getCards(){
-            DataService.Card.getAll().then(function (data) {
-                $scope.cards = data;
+            return DataService.Card.getAll();
+        }
+
+        function renderTime(){
+            return '<span ng-bind="data[col.field] | date:\'yyyy-MM-dd\'"></span>';
+        }
+
+        function renderFace(){
+            return '<div class="si-home-img-container"><img ng-src="{{data[col.field]}}" /></div>';
+        }
+
+        function onEdit(card){
+            $state.go('card', {
+                card_id: card.id
             });
         }
     });
 
+    module.controller('CardCtrl', function ($scope, DataService, $state, $maltoseUploader) {
+        var cardId = $state.params.card_id;
 
+        $scope.card = {};
+
+        $scope.onSubmit = function () {
+
+        };
+
+        DataService.Card.get(cardId).then(function (data) {
+            $scope.card = data;
+        });
+
+        $maltoseUploader.imgUpload($('#uploadFile')[0], {
+
+        });
+
+    });
 
     module.controller('ResultCtrl', function($scope, DataService){
 

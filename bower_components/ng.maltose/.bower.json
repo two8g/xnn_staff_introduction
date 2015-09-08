@@ -22,15 +22,15 @@
     "angular-material": "~0.10.0",
     "FileSaver": "*"
   },
-  "version": "0.1.0",
-  "_release": "0.1.0",
+  "version": "0.1.1",
+  "_release": "0.1.1",
   "_resolution": {
     "type": "version",
-    "tag": "v0.1.0",
-    "commit": "2b00bea8ac713dfe0ef6c13246c3ad05353014df"
+    "tag": "v0.1.1",
+    "commit": "d301e1d42abe796bf27654292ca982a9568c829b"
   },
   "_source": "git://github.com/liyatang/ng.maltose.git",
-  "_target": "~0.1.0",
+  "_target": "~0.1.1",
   "_originalSource": "ng.maltose",
   "_direct": true
 }

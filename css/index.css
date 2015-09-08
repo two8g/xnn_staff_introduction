@@ -25,6 +25,9 @@ body{
     height: 80px;
     overflow: hidden;
 }
+.si-home-img-container img{
+    width: 100%;
+}
 .si-home-introduction{
-    width: 200px;;
+    width: 200px;
 }

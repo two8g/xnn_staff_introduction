@@ -31,11 +31,10 @@ angular.module('ng.maltose.pick', ['ng.maltose']);
 angular.module("ng.maltose.templates", []).run(["$templateCache", function($templateCache) {$templateCache.put("views/apartment.pick.html","<div>\n    <md-autocomplete ng-if=\"!pickChips\" flex required\n                     md-selected-item=\"pick.ngModel\"\n                     md-search-text=\"searchText\"\n                     md-items=\"item in querySearch(searchText)\"\n                     md-no-cache=\"true\"\n                     md-delay=\"500\"\n                     md-item-text=\"item.apartmentName\"\n                     md-autoselect=\"true\"\n                     ng-disabled=\"!pickCommunityId\"\n                     md-floating-label=\"APARTMENT\">\n        <md-item-template>\n            <span md-highlight-text=\"searchText\">{{item.apartmentName}} </span>\n        </md-item-template>\n        <md-not-found>\n            No matches found\n        </md-not-found>\n    </md-autocomplete>\n\n\n    <md-chips ng-if=\"pickChips\" ng-model=\"pick.ngModel\" md-autocomplete-snap md-require-match>\n        <md-autocomplete\n                md-selected-item=\"selectedItem\"\n                md-search-text=\"searchText\"\n                md-items=\"item in querySearch(searchText)\"\n                md-no-cache=\"true\"\n                md-delay=\"500\"\n                md-item-text=\"item.apartmentName\"\n                md-autoselect=\"true\"\n                ng-disabled=\"!pickCommunityId\"\n                placeholder=\"APARTMENT\">\n            <md-item-template>\n                <span md-highlight-text=\"searchText\">{{item.apartmentName}}</span>\n            </md-item-template>\n            <md-not-found>\n                No matches found\n            </md-not-found>\n        </md-autocomplete>\n        <md-chip-template>\n        <span>\n          <strong>{{$chip.apartmentName}}</strong>\n        </span>\n        </md-chip-template>\n    </md-chips>\n</div>");
 $templateCache.put("views/building.pick.html","<div>\n    <md-autocomplete ng-if=\"!pickChips\" flex required\n                     md-selected-item=\"pick.ngModel\"\n                     md-search-text=\"searchText\"\n                     md-items=\"item in querySearch(searchText)\"\n                     md-no-cache=\"true\"\n                     md-delay=\"500\"\n                     md-item-text=\"item.buildingName\"\n                     md-autoselect=\"true\"\n                     ng-disabled=\"!pickCommunityId\"\n                     md-floating-label=\"BUILDING\">\n        <md-item-template>\n            <span md-highlight-text=\"searchText\">{{item.buildingName}} </span>\n        </md-item-template>\n        <md-not-found>\n            No matches found\n        </md-not-found>\n    </md-autocomplete>\n\n\n    <md-chips ng-if=\"pickChips\" ng-model=\"pick.ngModel\" md-autocomplete-snap md-require-match>\n        <md-autocomplete\n                md-selected-item=\"selectedItem\"\n                md-search-text=\"searchText\"\n                md-items=\"item in querySearch(searchText)\"\n                md-no-cache=\"true\"\n                md-delay=\"500\"\n                md-item-text=\"item.buildingName\"\n                md-autoselect=\"true\"\n                ng-disabled=\"!pickCommunityId\"\n                placeholder=\"BUILDING\">\n            <md-item-template>\n                <span md-highlight-text=\"searchText\">{{item.buildingName}}</span>\n            </md-item-template>\n            <md-not-found>\n                No matches found\n            </md-not-found>\n        </md-autocomplete>\n        <md-chip-template>\n        <span>\n          <strong>{{$chip.buildingName}}</strong>\n        </span>\n        </md-chip-template>\n    </md-chips>\n</div>");
 $templateCache.put("views/community.pick.html","<div>\n    <md-autocomplete ng-if=\"!pickChips\" flex required\n                     md-selected-item=\"pick.ngModel\"\n                     md-search-text=\"searchText\"\n                     md-items=\"item in querySearch(searchText)\"\n                     md-no-cache=\"true\"\n                     md-delay=\"500\"\n                     md-item-text=\"item.name\"\n                     md-autoselect=\"true\"\n                     ng-disabled=\"!pickCityId\"\n                     md-floating-label=\"COMMUNITY\">\n        <md-item-template>\n            <span md-highlight-text=\"searchText\">{{item.name}} </span>\n        </md-item-template>\n        <md-not-found>\n            No matches found\n        </md-not-found>\n    </md-autocomplete>\n\n\n    <md-chips ng-if=\"pickChips\" ng-model=\"pick.ngModel\" md-autocomplete-snap md-require-match>\n        <md-autocomplete\n                md-selected-item=\"selectedItem\"\n                md-search-text=\"searchText\"\n                md-items=\"item in querySearch(searchText)\"\n                md-no-cache=\"true\"\n                md-delay=\"500\"\n                md-item-text=\"item.name\"\n                md-autoselect=\"true\"\n                ng-disabled=\"!pickCityId\"\n                placeholder=\"COMMUNITY\">\n            <md-item-template>\n                <span md-highlight-text=\"searchText\">{{item.name}}</span>\n            </md-item-template>\n            <md-not-found>\n                No matches found\n            </md-not-found>\n        </md-autocomplete>\n        <md-chip-template>\n        <span>\n          <strong>{{$chip.name}}</strong>\n        </span>\n        </md-chip-template>\n    </md-chips>\n</div>");
-$templateCache.put("views/grid.edit.autocomplete.html","<div class=\"maltose-grid-edit\" ng-dblclick=\"onEdit($event)\">\n    <span ng-bind=\"gridModel\" ng-show=\"!edit\"></span>\n    <md-autocomplete\n            ng-show=\"edit\"\n            tabindex=\"-1\"\n            ng-model=\"gridModel\"\n            ng-keyup=\"onKey($event)\"\n            md-autofocus=\"true\"\n            md-search-text-change=\"searchTextChange(gridModel)\"\n            md-search-text=\"gridModel\"\n            md-selected-item-change=\"selectedItemChange(item)\"\n            md-items=\"item in querySearch(gridModel)\"\n            md-item-text=\"item.display\"\n            md-min-length=\"0\"\n            placeholder=\"输入内容，按回车确定，esc退出\"\n            md-menu-class=\"autocomplete-custom-template\">\n        <md-item-template>\n            <span md-highlight-text=\"item.value\" md-highlight-flags=\"^i\">{{item.display}}</span>\n        </md-item-template>\n    </md-autocomplete>\n</div>");
 $templateCache.put("views/grid.edit.html","<div class=\"maltose-grid-edit\" ng-dblclick=\"onEdit($event)\">\n    <span ng-show=\"!edit\">{{gridModel}}&nbsp;</span>\n    <input type=\"text\" tabindex=\"-1\" ng-model=\"gridModel\" ng-show=\"edit\" ng-blur=\"cancelEdit($event)\" ng-keyup=\"onKey($event)\" maltose-focus-on=\"maltoseGridEditInput\"/>\n</div>");
 $templateCache.put("views/grid.edit.select.html","<div class=\"maltose-grid-edit\" ng-dblclick=\"onEdit($event)\">\n    <span ng-bind=\"gridModel\" ng-show=\"!edit\"></span>\n    <select tabindex=\"-1\" ng-model=\"selected\" ng-show=\"edit\" maltose-focus-on=\"maltoseGridEditSelect\" ng-blur=\"cancelEdit($event)\" ng-options=\"value.name for value in selects\" ng-change=\"onChange($event)\" ng-keyup=\"onKey($event)\">\n    </select>\n</div>");
 $templateCache.put("views/grid.edit.switch.html","<div class=\"maltose-grid-edit\" ng-dblclick=\"onEdit($event)\">\n    <span ng-bind=\"gridModel\" ng-show=\"!(gridEditEver || edit)\"></span>\n\n    <md-switch class=\"md-primary\" tabindex=\"-1\" ng-model=\"gridModel\" aria-label=\"Switch\" maltose-focus-on=\"maltoseGridEditSwitch\" ng-show=\"gridEditEver || edit\" ng-blur=\"cancelEdit($event)\" ng-keyup=\"onKey($event)\" ng-change=\"onChange($event)\"></md-switch>\n\n</div>");
-$templateCache.put("views/grid.html","<div class=\"maltose-grid\">\n    <table class=\"table table-striped table-hover table-condensed\">\n        <thead>\n        <tr>\n            <th ng-if=\"config.enableSelect\" class=\"maltose-grid-select\">\n                <md-checkbox ng-click=\"onCheckAll($event)\"></md-checkbox>\n            </th>\n            <th ng-repeat=\"col in config.columns\" ng-bind=\"col.name\"></th>\n            <th ng-if=\"config.actions.length > 0\">操作</th>\n        </tr>\n        </thead>\n        <tbody>\n        <tr ng-repeat=\"(rowIndex, data) in config.data\">\n            <td ng-if=\"config.enableSelect\" class=\"maltose-grid-select\">\n                <md-checkbox ng-model=\"data._checked\"></md-checkbox>\n            </td>\n            <td ng-repeat=\"(columnIndex, col) in config.columns\">\n                <span ng-if=\"!col.edit && col.render\" style=\"{{col.style}}\">\n                    <div maltose-compile html=\"{{col.render(data[col.field])}}\"></div>\n                </span>\n                <span ng-if=\"!col.edit && !col.render\" ng-bind=\"data[col.field]\" style=\"{{col.style}}\"></span>\n\n                <div ng-if=\"col.edit && col.editType === \'input\'\">\n                    <div maltose-grid-edit grid-model=\"data[col.field]\"\n                         grid-after-edit=\"onAfterEdit(value, col, data)\"></div>\n                </div>\n                <div ng-if=\"col.edit && col.editType === \'select\'\">\n                    <div maltose-grid-edit-select grid-model=\"data[col.field]\" grid-edit-type=\"col.editType\"\n                         grid-edit-data=\"col.editData()\" grid-after-edit=\"onAfterEdit(value, col, data)\"></div>\n                </div>\n                <div ng-if=\"col.edit && col.editType === \'switch\'\">\n                    <div maltose-grid-edit-switch grid-model=\"data[col.field]\"\n                         grid-after-edit=\"onAfterEdit(value, col, data)\" grid-edit-ever=\"col.editEver\"></div>\n                </div>\n                <div ng-if=\"col.edit && col.editType === \'autocomplete\'\">\n                    <div maltose-grid-edit-autocomplete grid-model=\"data[col.field]\"\n                         grid-after-edit=\"onAfterEdit(value, col, data)\"></div>\n                </div>\n            </td>\n\n            <td ng-if=\"config.actions.length > 0\">\n                <md-button ng-repeat=\"act in config.actions\" class=\"md-raised {{act.className}}\" ng-bind=\"act.html\"\n                           ng-disabled=\"act.isDisabled(data, config.data, $event)\"\n                           ng-click=\"act.action(data, config.data, $event)\"></md-button>\n            </td>\n        </tr>\n        </tbody>\n    </table>\n    <div layout=\"row\">\n        <md-button class=\"md-raised\" ng-click=\"getData()\" ng-if=\"config.next\">更多</md-button>\n        <md-button class=\"md-raised\" ng-if=\"!config.next\" ng-disabled=\"true\">没有更多</md-button>\n        <div flex ng-if=\"config.enableSelect && config.actions.length > 0\">\n            <md-button ng-repeat=\"act in config.actions\" ng-if=\"act.batch\" class=\"md-raised {{act.className}}\"\n                       ng-bind=\"act.html\"\n                       ng-click=\"onBatch(act, $event)\"></md-button>\n        </div>\n        <div flex layout=\"row\" layout-align=\"end\">\n            <md-button ng-if=\"config.enableExport && config.exportOptions.xls\" ng-click=\"onExport(\'xls\')\">导出xls\n            </md-button>\n            <md-button ng-if=\"config.enableExport && config.exportOptions.csv\" ng-click=\"onExport(\'csv\')\">导出csv\n            </md-button>\n        </div>\n    </div>\n</div>");
+$templateCache.put("views/grid.html","<div class=\"maltose-grid\">\n    <table class=\"table table-striped table-hover table-condensed\">\n        <thead>\n        <tr>\n            <th ng-if=\"config.enableSelect\" class=\"maltose-grid-select\">\n                <md-checkbox ng-click=\"onCheckAll($event)\"></md-checkbox>\n            </th>\n            <th ng-repeat=\"col in config.columns\" ng-bind=\"col.name\"></th>\n            <th ng-if=\"config.actions.length > 0\">操作</th>\n        </tr>\n        </thead>\n        <tbody>\n        <tr ng-repeat=\"(rowIndex, data) in config.data\">\n            <td ng-if=\"config.enableSelect\" class=\"maltose-grid-select\">\n                <md-checkbox ng-model=\"data._checked\"></md-checkbox>\n            </td>\n            <td ng-repeat=\"(columnIndex, col) in config.columns\" style=\"{{col.style}}\">\n                <span ng-if=\"!col.edit && col.render\">\n                    <div maltose-compile html=\"{{col.render(data[col.field])}}\"></div>\n                </span>\n                <span ng-if=\"!col.edit && !col.render\" ng-bind=\"data[col.field]\"></span>\n\n                <div ng-if=\"col.edit && col.editType === \'input\'\">\n                    <div maltose-grid-edit grid-model=\"data[col.field]\"\n                         grid-after-edit=\"onAfterEdit(value, col, data)\"></div>\n                </div>\n                <div ng-if=\"col.edit && col.editType === \'select\'\">\n                    <div maltose-grid-edit-select grid-model=\"data[col.field]\" grid-edit-type=\"col.editType\"\n                         grid-edit-data=\"col.editData()\" grid-after-edit=\"onAfterEdit(value, col, data)\"></div>\n                </div>\n                <div ng-if=\"col.edit && col.editType === \'switch\'\">\n                    <div maltose-grid-edit-switch grid-model=\"data[col.field]\"\n                         grid-after-edit=\"onAfterEdit(value, col, data)\" grid-edit-ever=\"col.editEver\"></div>\n                </div>\n            </td>\n\n            <td ng-if=\"config.actions.length > 0\">\n                <md-button ng-repeat=\"act in config.actions\" class=\"md-raised {{act.className}}\" ng-bind=\"act.html\"\n                           ng-disabled=\"act.isDisabled(data, config.data, $event)\"\n                           ng-click=\"act.action(data, config.data, $event)\"></md-button>\n            </td>\n        </tr>\n        </tbody>\n    </table>\n    <div layout=\"row\">\n        <md-button class=\"md-raised\" ng-click=\"getData()\" ng-if=\"config.next\">更多</md-button>\n        <md-button class=\"md-raised\" ng-if=\"!config.next\" ng-disabled=\"true\">没有更多</md-button>\n        <div flex ng-if=\"config.enableSelect && config.actions.length > 0\">\n            <md-button ng-repeat=\"act in config.actions\" ng-if=\"act.batch\" class=\"md-raised {{act.className}}\"\n                       ng-bind=\"act.html\"\n                       ng-click=\"onBatch(act, $event)\"></md-button>\n        </div>\n        <div flex layout=\"row\" layout-align=\"end\">\n            <md-button ng-if=\"config.enableExport && config.exportOptions.xls\" ng-click=\"onExport(\'xls\')\">导出xls\n            </md-button>\n            <md-button ng-if=\"config.enableExport && config.exportOptions.csv\" ng-click=\"onExport(\'csv\')\">导出csv\n            </md-button>\n        </div>\n    </div>\n</div>");
 $templateCache.put("views/progress.html","<div class=\"maltose-progress\" ng-if=\"show\">\n    <md-progress-circular md-mode=\"indeterminate\"></md-progress-circular>\n</div>");
 $templateCache.put("views/prompt.html","<md-dialog>\n    <md-dialog-content>\n        <h2 ng-if=\"config.title\">{{config.title}}</h2>\n        <p>{{config.content}}</p>\n        <md-input-container md-no-float>\n            <input ng-model=\"result\" placeholder=\"\">\n        </md-input-container>\n    </md-dialog-content>\n    <div class=\"md-actions\">\n        <md-button ng-click=\"onCancel()\" class=\"md-primary\">{{config.cancel | uppercase}}</md-button>\n        <md-button ng-click=\"onOk()\" class=\"md-primary\">{{config.ok | lowercase}}</md-button>\n    </div>\n</md-dialog>");
 $templateCache.put("views/region.pick.html","<div>\n    <md-autocomplete ng-if=\"!pickChips\" flex required\n                     md-selected-item=\"pick.ngModel\"\n                     md-search-text=\"searchText\"\n                     md-items=\"item in querySearch(searchText)\"\n                     md-no-cache=\"true\"\n                     md-delay=\"500\"\n                     md-item-text=\"item.name\"\n                     md-autoselect=\"true\"\n                     ng-disabled=\"(needRegionParent && !regionParent)\"\n                     md-floating-label=\"{{name | uppercase}}\">\n        <md-item-template>\n            <span md-highlight-text=\"searchText\">{{item.name}} </span>\n            <small md-highlight-text=\"searchText\">({{item.path}})</small>\n        </md-item-template>\n        <md-not-found>\n            No matches found\n        </md-not-found>\n    </md-autocomplete>\n\n\n    <md-chips ng-if=\"pickChips\" ng-model=\"pick.ngModel\" md-autocomplete-snap md-require-match>\n        <md-autocomplete\n                md-selected-item=\"selectedItem\"\n                md-search-text=\"searchText\"\n                md-items=\"item in querySearch(searchText)\"\n                md-no-cache=\"true\"\n                md-delay=\"500\"\n                md-item-text=\"item.name\"\n                md-autoselect=\"true\"\n                ng-disabled=\"(needRegionParent && !regionParent)\"\n                placeholder=\"{{name | uppercase}}\">\n            <md-item-template>\n                <span md-highlight-text=\"searchText\">{{item.name}}</span>\n                <small md-highlight-text=\"searchText\">({{item.path}})</small>\n            </md-item-template>\n            <md-not-found>\n                No matches found\n            </md-not-found>\n        </md-autocomplete>\n        <md-chip-template>\n        <span>\n          <strong>{{$chip.name}}</strong><small>({{$chip.path}})</small>\n        </span>\n        </md-chip-template>\n    </md-chips>\n</div>");
@@ -567,116 +566,6 @@ angular.module('ng.maltose.grid', ['ng.maltose', 'ng.maltose.exporter']).directi
                     });
                 }, 1);
             };
-        }]
-    };
-}]).directive('maltoseGridEditAutocomplete', ["$maltoseFocusOn", "$timeout", function ($maltoseFocusOn, $timeout) {
-    'use strict';
-
-    return {
-        restrict: 'A',
-        replace: true,
-        scope: {
-            gridModel: '=',
-            gridAfterEdit: '&',
-            gridEditType: '@',
-            gridEditData: '&'
-        },
-        templateUrl: 'views/grid.edit.autocomplete.html',
-        controller: ["$scope", "$element", "$log", "$q", function ($scope, $element, $log, $q) {
-
-            $scope.edit = false;
-
-            $scope.states = [{}];
-
-            $scope._id = null;
-
-            $scope.gridModel = $scope.gridModel || false;
-
-            var oldValue = $scope.gridModel;
-
-            $element.closest('td').width($element.width());
-
-            $scope.states = [{}];
-
-            function createFilterFor(query) {
-                var lowercaseQuery = angular.lowercase(query);
-                return function filterFn(state) {
-                    if (!isEmptyObj(state)) {
-                        if (angular.isNumber(state.value)) {
-                            state.value += '';
-                        }
-                        if (angular.isNumber(state.display)) {
-                            state.display += '';
-                        }
-                        return (state.display.indexOf(lowercaseQuery) === 0);
-                    }
-                };
-            }
-
-            function isEmptyObj(obj) {
-                var name;
-                for (name in obj) {
-                    return false;
-                }
-                return true;
-            }
-
-            $scope.querySearch = function (query) {
-                if ($scope.states) {
-                    var results = query ? $scope.states.filter(createFilterFor(query)) : $scope.states,
-                        deferred;
-                    deferred = $q.defer();
-                    $timeout(function () {
-                        deferred.resolve(results);
-                    }, Math.random() * 10, false);
-                    return deferred.promise;
-                }
-            };
-
-            $scope.onEdit = function (event) {
-                $element.addClass('maltose-grid-edit-on');
-                $scope.edit = true;
-                $maltoseFocusOn('maltoseGridEditAutocomplete');
-            };
-
-            $scope.onKey = function (event) {
-                if (event.keyCode === 27) {
-                    $scope.gridModel = oldValue;
-
-                    $scope.edit = false;
-                }
-
-                if (event.keyCode === 13) {
-                    $scope.edit = false;
-
-                    $timeout(function () {
-                        $scope.gridAfterEdit({
-                            value: {
-                                newValue: $scope.gridModel,
-                                oldValue: oldValue,
-                                _id: $scope._id
-                            }
-                        });
-                    }, 1);
-                }
-            };
-
-            $scope.searchTextChange = function (text) {
-                $scope.getData();
-            };
-
-            $scope.getData = function () {
-                $scope.$parent.$parent.col.onEditting($scope.$parent.$parent.col, $scope.$parent.$parent.$parent.data, function (data) {
-                    $scope.states = data;
-                });
-            };
-
-            $scope.selectedItemChange = function (item) {
-                if (item) {
-                    $scope._id = item.value;
-                }
-            };
-
         }]
     };
 }]);

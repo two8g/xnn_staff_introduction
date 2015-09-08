@@ -21,6 +21,7 @@
     "materialize": "~0.97.0",
     "ui-router": "~0.2.15",
     "angular-material": "~0.10.1",
-    "ng.maltose": "~0.1.0"
+    "ng.maltose": "~0.1.1",
+    "fontawesome": "~4.4.0"
   }
 }
