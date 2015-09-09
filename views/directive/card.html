@@ -1,6 +1,8 @@
 <div class="ui-card">
     <md-card>
-        <img class="activator" src="images/2.jpg">
+        <div class="ui-card-img-container">
+            <img class="activator" ng-src="{{card.face}}">
+        </div>
         <md-card-content>
             <h2 ng-bind="card.name"></h2>
 

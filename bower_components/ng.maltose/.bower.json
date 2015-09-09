@@ -12,6 +12,16 @@
     "test",
     "tests"
   ],
+  "dependencies": {
+    "fontawesome": "~4.3.0",
+    "underscore": "~1.8.3",
+    "jquery": "~2.1.4",
+    "angular-sanitize": "~1.4.0",
+    "bootstrap": "~3.3.5",
+    "angular": "1.4.0",
+    "angular-material": "~0.10.0",
+    "FileSaver": "*"
+  },
   "devDependencies": {
     "fontawesome": "~4.3.0",
     "underscore": "~1.8.3",
@@ -22,15 +32,15 @@
     "angular-material": "~0.10.0",
     "FileSaver": "*"
   },
-  "version": "0.1.1",
-  "_release": "0.1.1",
+  "version": "0.1.4",
+  "_release": "0.1.4",
   "_resolution": {
     "type": "version",
-    "tag": "v0.1.1",
-    "commit": "d301e1d42abe796bf27654292ca982a9568c829b"
+    "tag": "v0.1.4",
+    "commit": "d298e5f3d2064b244f3044df14263ded4e8c1bb9"
   },
   "_source": "git://github.com/liyatang/ng.maltose.git",
-  "_target": "~0.1.1",
+  "_target": "~0.1.4",
   "_originalSource": "ng.maltose",
   "_direct": true
 }

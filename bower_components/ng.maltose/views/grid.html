@@ -14,11 +14,11 @@
             <td ng-if="config.enableSelect" class="maltose-grid-select">
                 <md-checkbox ng-model="data._checked"></md-checkbox>
             </td>
-            <td ng-repeat="(columnIndex, col) in config.columns">
-                <span ng-if="!col.edit && col.render" style="{{col.style}}">
+            <td ng-repeat="(columnIndex, col) in config.columns" style="{{col.style}}">
+                <span ng-if="!col.edit && col.render">
                     <div maltose-compile html="{{col.render(data[col.field])}}"></div>
                 </span>
-                <span ng-if="!col.edit && !col.render" ng-bind="data[col.field]" style="{{col.style}}"></span>
+                <span ng-if="!col.edit && !col.render" ng-bind="data[col.field]"></span>
 
                 <div ng-if="col.edit && col.editType === 'input'">
                     <div maltose-grid-edit grid-model="data[col.field]"
