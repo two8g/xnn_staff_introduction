@@ -1,0 +1,23 @@
+{
+  "name": "xnn_staff_introduction",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "dependencies": {
+    "express": "^4.13.3"
+  },
+  "devDependencies": {
+    "connect-redis": "^2.5.0",
+    "express": "^4.13.3",
+    "morgan": "^1.6.1",
+    "redis": "^1.0.0",
+    "when": "^3.7.3"
+  },
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "url": "https://github.com/liyatang/xnn_staff_introduction/issues"
+  },
+  "homepage": "https://github.com/liyatang/xnn_staff_introduction#readme"
+}
