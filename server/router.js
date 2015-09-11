@@ -27,18 +27,20 @@
 
     var date = +new Date();
     var flag = 0;
-    function getUniqueId(){
+
+    function getUniqueId() {
         return date + flag++;
     }
 
-    function getCardKey(id){
+    function getCardKey(id) {
         return 'si_card_' + id;
     }
-    function getCardsKey(){
+
+    function getCardsKey() {
         return 'si_cards';
     }
 
-    function preRes(promise, res){
+    function preRes(promise, res) {
         promise.then(function (data) {
             res.json({
                 code: 0,
@@ -51,6 +53,7 @@
             });
         });
     }
+
     router.post('/card/get', function (req, res) {
         var id = Number(req.body.id);
         preRes(redisClient.get(getCardKey(id)), res);
@@ -60,9 +63,9 @@
         preRes(redisClient.get(getCardsKey()), res);
     });
 
-    router.post('/card/set', function(req, res){
+    router.post('/card/set', function (req, res) {
         var card = JSON.parse(req.body.card || {});
-        if(!card.id){
+        if (!card.id) {
             card.id = getUniqueId();
         }
         preRes(redisClient.set(getCardKey(card.id), card), res);
