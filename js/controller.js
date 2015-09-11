@@ -8,10 +8,13 @@
 
         $scope.addCard = function () {
             DataService.Card.set({}).then(function () {
-                getCards();
+                reloadGrid();
             });
         };
 
+        function reloadGrid() {
+            $scope.gridData.watchReload = true;
+        }
 
         $scope.gridData = {
             enableSelect: true,
@@ -20,13 +23,17 @@
                 {field: 'name', name: '名字'},
                 {field: 'department', name: '所在部门'},
                 {field: 'entryTime', name: '入职时间', render: renderTime},
-                {field: 'introduction', name: '自我介绍', style:'width: 200px;'},
+                {field: 'introduction', name: '自我介绍', style: 'width: 200px;'},
                 {field: 'face', name: '图片', render: renderFace}
             ],
             actions: [{
                 type: 'btn',
                 html: '编辑',
                 action: onEdit
+            }, {
+                type: 'btn',
+                html: '删除',
+                action: onDel
             }],
             getData: function () {
                 return getCards().then(function (data) {
@@ -37,22 +44,30 @@
             }
         };
 
-        function getCards(){
+        function getCards() {
             return DataService.Card.getAll();
         }
 
-        function renderTime(){
+        function renderTime() {
             return '<span ng-bind="data[col.field] | date:\'yyyy-MM-dd\'"></span>';
         }
 
-        function renderFace(){
+        function renderFace() {
             return '<div class="ui-card-img-container"><img ng-src="{{data[col.field]}}" /></div>';
         }
 
-        function onEdit(card){
+        function onEdit(card) {
             $state.go('card', {
                 card_id: card.id
             });
+        }
+
+        function onDel(card) {
+            if (window.confirm('确定删除？')) {
+                DataService.Card.del(card.id).then(function () {
+                    reloadGrid();
+                });
+            }
         }
     });
 
@@ -63,12 +78,11 @@
 
         $scope.onSubmit = function () {
             DataService.Card.set($scope.card).then(function (data) {
-                console.log(data);
+                window.alert('保存成功');
             });
         };
 
         DataService.Card.get(cardId).then(function (data) {
-            debugger;
             $scope.card = data;
         });
 
@@ -80,11 +94,11 @@
             }
         });
 
-        function readFile(file){
+        function readFile(file) {
             var def = $q.defer();
             var reader = new FileReader();
             reader.readAsDataURL(file);
-            reader.onload = function(e){
+            reader.onload = function (e) {
                 def.resolve(this.result);
             };
             return def.promise;
@@ -92,7 +106,7 @@
 
     });
 
-    module.controller('ResultCtrl', function($scope, DataService){
+    module.controller('ResultCtrl', function ($scope, DataService) {
 
         DataService.Card.getAll().then(function (data) {
             $scope.cards = data;

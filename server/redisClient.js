@@ -39,4 +39,16 @@
         });
     };
 
+    exports.del = function (key) {
+        return when.promise(function (resolve, reject) {
+            redisClient.del(key, function (err) {
+                if (err) {
+                    reject(err);
+                } else {
+                    resolve(key);
+                }
+            });
+        });
+    };
+
 })();

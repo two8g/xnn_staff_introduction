@@ -8,29 +8,31 @@
         <div flex>
             <form ng-submit="onSubmit()" novalidate>
                 <div class="form-group">
+                    <label>头像</label>
                     <button type="button" id="uploadFile">Upload</button>
                 </div>
-                <md-input-container>
-                    <label>名字</label>
-                    <input type="text" ng-model="card.name"/>
-                </md-input-container>
-
-                <md-input-container>
-                    <label>所在部门</label>
-                    <input type="text" ng-model="card.department"/>
-                </md-input-container>
-
-                <md-input-container>
-                    <label>入职时间</label>
-                    <input type="date" ng-model="card.entryTime"/>
-                </md-input-container>
-
                 <div class="form-group">
-                <textarea class="form-control" rows="5" ng-model="card.introduction"></textarea>
+                    <label>名字</label>
+                    <input type="text" class="form-control" ng-model="card.name"/>
                 </div>
 
-                <div class="text-right">
-                    <md-button type="submit" class="md-primary md-raised">提交</md-button>
+                <div class="form-group">
+                    <label>所在部门</label>
+                    <input type="text" class="form-control" ng-model="card.department"/>
+                </div>
+
+                <div class="form-group">
+                    <label>入职时间</label>
+                    <input type="date" class="form-control" ng-model="card.entryTime"/>
+                </div>
+
+                <div class="form-group">
+                    <label>自我介绍</label>
+                    <textarea class="form-control" rows="5" ng-model="card.introduction"></textarea>
+                </div>
+
+                <div>
+                    <button type="submit" class="btn btn-primary btn-block">保存</button>
                 </div>
             </form>
         </div>

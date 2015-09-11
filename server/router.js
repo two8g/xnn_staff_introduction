@@ -5,6 +5,7 @@
     var router = express.Router();
     var when = require('when');
     var redisClient = require('./redisClient');
+    var _ = require('underscore');
 
     //function processRes(res){
     //
@@ -62,7 +63,14 @@
 
     router.post('/card/list', function (req, res) {
         preRes(redisClient.get(getCardsKey()).then(function (data) {
-            return data || [];
+            var arr = [];
+            _.each(data, function (id) {
+                arr.push(redisClient.get(getCardKey(id)));
+            });
+
+            return when.all(arr).then(function (darr) {
+                return darr;
+            });
         }), res);
     });
 
@@ -70,7 +78,7 @@
         var card = JSON.parse(req.body.card || {});
         if (!card.id) {
             card.id = getUniqueId();
-            var setCardList = redisClient.get(getCardsKey()).then(function(data){
+            var setCardList = redisClient.get(getCardsKey()).then(function (data) {
                 data = data || [];
                 data.push(card.id);
                 return redisClient.set(getCardsKey(), data);
@@ -83,9 +91,20 @@
             ]).then(function (re) {
                 return re[1];
             }), res);
-        }else{
+        } else {
             preRes(redisClient.set(getCardKey(card.id), card), res);
         }
+    });
+
+    router.post('/card/del', function (req, res) {
+        var id = Number(req.body.id);
+        preRes(redisClient.get(getCardsKey()).then(function (data) {
+            data = data || [];
+            data = _.reject(data, function (value) {
+                return value === id;
+            });
+            return redisClient.set(getCardsKey(), data);
+        }), res);
     });
 
     module.exports = router;

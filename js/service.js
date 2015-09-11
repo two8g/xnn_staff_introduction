@@ -36,6 +36,11 @@
                 return niceAjax('card/set', {
                     card: JSON.stringify(card || {})
                 });
+            },
+            del: function (id) {
+                return niceAjax('card/del', {
+                    id: id
+                });
             }
         };
 
