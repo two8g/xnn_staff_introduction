@@ -3,6 +3,7 @@
 
     var express = require('express');
     var router = express.Router();
+    var when = require('when');
     var redisClient = require('./redisClient');
 
     //function processRes(res){
@@ -60,15 +61,31 @@
     });
 
     router.post('/card/list', function (req, res) {
-        preRes(redisClient.get(getCardsKey()), res);
+        preRes(redisClient.get(getCardsKey()).then(function (data) {
+            return data || [];
+        }), res);
     });
 
     router.post('/card/set', function (req, res) {
         var card = JSON.parse(req.body.card || {});
         if (!card.id) {
             card.id = getUniqueId();
+            var setCardList = redisClient.get(getCardsKey()).then(function(data){
+                data = data || [];
+                data.push(card.id);
+                return redisClient.set(getCardsKey(), data);
+            });
+            var setCard = redisClient.set(getCardKey(card.id), card);
+
+            preRes(when.all([
+                setCardList,
+                setCard
+            ]).then(function (re) {
+                return re[1];
+            }), res);
+        }else{
+            preRes(redisClient.set(getCardKey(card.id), card), res);
         }
-        preRes(redisClient.set(getCardKey(card.id), card), res);
     });
 
     module.exports = router;

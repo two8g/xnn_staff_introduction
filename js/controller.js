@@ -6,8 +6,8 @@
     module.controller('HomeCtrl', function ($scope, DataService, $state) {
 
 
-        DataService.addCard = function () {
-            DataService.Card.add({}).then(function () {
+        $scope.addCard = function () {
+            DataService.Card.set({}).then(function () {
                 getCards();
             });
         };
@@ -62,10 +62,13 @@
         $scope.card = {};
 
         $scope.onSubmit = function () {
-
+            DataService.Card.set($scope.card).then(function (data) {
+                console.log(data);
+            });
         };
 
         DataService.Card.get(cardId).then(function (data) {
+            debugger;
             $scope.card = data;
         });
 
