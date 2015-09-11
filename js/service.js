@@ -3,48 +3,40 @@
 
     angular.module('staffIntroduction').factory('DataService', function($q){
 
+        var urlBase = '/api/';
+        var niceAjax = function (url, data) {
+            var def = $q.defer();
+            $.ajax({
+                url: urlBase + url,
+                type: 'post',
+                data: data,
+                success: function (re) {
+                    if(re !== 0){
+                        window.alert(re.msg);
+                    }else{
+                        def.resolve(re.data);
+                    }
+                }
+            });
+            return def.promise;
+        };
+
         var Data = {};
 
-        var CardsData = [{
-            id: 1441583926153,
-            face: 'images/2.jpg',
-            name: '李雅堂',
-            department: '技术部',
-            entryTime: new Date(),
-            introduction: '大家好，我叫李雅堂，可以叫我麦芽糖。家乡广东茂名，兴趣玩游戏和下厨。很高兴加入小农女和大家一起工作，多多指教。'
-        }, {
-            id: 1441583926154,
-            face: 'images/1.jpg',
-            name: '李吉荣',
-            department: '行政部',
-            entryTime: new Date(),
-            introduction: '大家好，很高兴和大家一起共事。多多指教。'
-        }];
-
-        var date = +new Date();
-        var flag = 0;
-        function getUniqueId(){
-            return date + flag++;
-        }
 
 
         Data.Card = {
             get: function (id) {
-                var card = _.find(CardsData, function (value) {
-                    return value.id === id;
-                });
-                return card ? $q.resolve(card) : $q.reject('找不到');
+                return niceAjax('card/get', {id: id});
             },
             getAll: function () {
-                return $q.when(CardsData);
+                return niceAjax('card/list');
             },
             add: function(card){
-                card.id = getUniqueId();
-                CardsData.push(card);
-                return $q.when(card);
+                return niceAjax('card/add', card || {});
             },
             set: function (card) {
-                return $q.when(card);
+                return niceAjax('card/set', card);
             }
         };
 

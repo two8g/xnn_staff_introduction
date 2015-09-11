@@ -17,7 +17,7 @@
     app.use(express.static(path.join(__dirname, '')));
 
 
-    app.use('/', require('./server/router'));
+    app.use('/api', require('./server/router'));
 
 
     app.listen(config.port, function() {
