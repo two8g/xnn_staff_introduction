@@ -61,6 +61,17 @@
         preRes(redisClient.get(getCardKey(id)), res);
     });
 
+    router.post('/card/gets', function (req, res) {
+        var ids = JSON.parse(req.body.ids);
+        var arr = [];
+        _.each(ids, function (id) {
+            arr.push(redisClient.get(getCardKey(id)));
+        });
+        preRes(when.all(arr).then(function (re) {
+            return re;
+        }), res);
+    });
+
     router.post('/card/list', function (req, res) {
         preRes(redisClient.get(getCardsKey()).then(function (data) {
             var arr = [];

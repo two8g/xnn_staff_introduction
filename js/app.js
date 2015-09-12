@@ -13,7 +13,7 @@
             controller: 'HomeCtrl',
             templateUrl: 'views/home.html'
         }).state('result', {
-            url: '/result',
+            url: '/result/:card_ids',
             controller: 'ResultCtrl',
             templateUrl: 'views/result.html'
         }).state('card', {

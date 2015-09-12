@@ -34,6 +34,10 @@
                 type: 'btn',
                 html: '删除',
                 action: onDel
+            }, {
+                type: 'btn',
+                html: '生成',
+                batch: onResult
             }],
             getData: function () {
                 return getCards().then(function (data) {
@@ -56,10 +60,22 @@
             return '<div class="ui-card-img-container"><img ng-src="{{data[col.field]}}" /></div>';
         }
 
+        function onResult(cards){
+            window.open($state.href('result', {
+                card_ids: _.map(cards, function (value) {
+                    return value.id;
+                }).join(',')
+            }, {
+                absolute: true
+            }));
+        }
+
         function onEdit(card) {
-            $state.go('card', {
+            window.open($state.href('card', {
                 card_id: card.id
-            });
+            }, {
+                absolute: true
+            }));
         }
 
         function onDel(card) {
@@ -82,16 +98,15 @@
             });
         };
 
-        DataService.Card.get(cardId).then(function (data) {
-            $scope.card = data;
+        $('#imgUpload').on('change', function (e) {
+            readFile(e.target.files[0]).then(function (data) {
+                $scope.card.face = data;
+            });
         });
 
-        $maltoseUploader.imgUpload($('#uploadFile')[0], {
-            onAddQueueItem: function (file) {
-                readFile(file).then(function (data) {
-                    $scope.card.face = data;
-                });
-            }
+
+        DataService.Card.get(cardId).then(function (data) {
+            $scope.card = data;
         });
 
         function readFile(file) {
@@ -106,9 +121,10 @@
 
     });
 
-    module.controller('ResultCtrl', function ($scope, DataService) {
+    module.controller('ResultCtrl', function ($scope, DataService, $state) {
 
-        DataService.Card.getAll().then(function (data) {
+        var cardIds = $state.params.card_ids.split(',');
+        DataService.Card.gets(cardIds).then(function (data) {
             $scope.cards = data;
         });
     });

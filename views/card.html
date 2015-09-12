@@ -9,7 +9,7 @@
             <form ng-submit="onSubmit()" novalidate>
                 <div class="form-group">
                     <label>头像</label>
-                    <button type="button" id="uploadFile">Upload</button>
+                    <input type="file" class="btn btn-info form-control" id="imgUpload">上传</input>
                 </div>
                 <div class="form-group">
                     <label>名字</label>
@@ -23,7 +23,7 @@
 
                 <div class="form-group">
                     <label>入职时间</label>
-                    <input type="date" class="form-control" ng-model="card.entryTime"/>
+                    <input type="text" class="form-control" ng-model="card.entryTime"/>
                 </div>
 
                 <div class="form-group">

@@ -29,6 +29,11 @@
             get: function (id) {
                 return niceAjax('card/get', {id: id});
             },
+            gets: function (ids) {
+                return niceAjax('card/gets', {
+                    ids: JSON.stringify(ids || [])
+                });
+            },
             getAll: function () {
                 return niceAjax('card/list');
             },
