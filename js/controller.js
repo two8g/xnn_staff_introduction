@@ -3,14 +3,9 @@
 
     var module = angular.module('staffIntroduction');
 
-    module.controller('HomeCtrl', function ($scope, DataService, $state) {
+    module.controller('HomeCtrl', function ($scope, DataService, $state, ConfigService) {
 
-
-        $scope.addCard = function () {
-            DataService.Card.set({}).then(function () {
-                reloadGrid();
-            });
-        };
+        $scope.areas = ConfigService.area;
 
         function reloadGrid() {
             $scope.gridData.watchReload = true;
@@ -19,7 +14,7 @@
         $scope.gridData = {
             enableSelect: true,
             columns: [
-                {field: 'id', name: 'id'},
+                {field: 'id', name: 'id + 地区 + 添加时间', render: renderInfo},
                 {field: 'name', name: '名字'},
                 {field: 'department', name: '所在部门'},
                 {field: 'entryTime', name: '入职时间', render: renderTime},
@@ -49,11 +44,103 @@
         };
 
         function getCards() {
-            return DataService.Card.getAll();
+            return DataService.Card.getList();
+        }
+
+        function renderInfo(){
+            return '<span>' +
+                '<span ng-bind="data[\'id\']"></span><br/>' +
+                '<span ng-bind="data[\'area\']"></span><br/>' +
+                '<span ng-bind="data[col.field] | toDate | date:\'yyyy-MM-dd HH:mm\'"></span><br/>' +
+                '</span>';
         }
 
         function renderTime() {
-            return '<span ng-bind="data[col.field] | date:\'yyyy-MM-dd\'"></span>';
+            return '<span ng-bind="data[col.field]"></span>';
+        }
+
+        function renderFace() {
+            return '<div class="ui-card-img-container"><img ng-src="{{data[col.field]}}" /></div>';
+        }
+
+        function onResult(cards){
+            window.open($state.href('result', {
+                card_ids: _.map(cards, function (value) {
+                    return value.id;
+                }).join(',')
+            }, {
+                absolute: true
+            }));
+        }
+
+        function onEdit(card) {
+            window.open($state.href('card', {
+                card_id: card.id
+            }, {
+                absolute: true
+            }));
+        }
+
+        function onDel(card) {
+            if (window.confirm('确定删除？')) {
+                DataService.Card.del(card.id).then(function () {
+                    reloadGrid();
+                });
+            }
+        }
+    });
+
+    module.controller('AreaCtrl', function ($scope, DataService, $state) {
+        var area = $state.params.area;
+
+        $scope.addCard = function () {
+            DataService.Card.set({area: area}).then(function () {
+                reloadGrid();
+            });
+        };
+
+        function reloadGrid() {
+            $scope.gridData.watchReload = true;
+        }
+
+        $scope.gridData = {
+            enableSelect: true,
+            columns: [
+                {field: 'addTime', name: '添加时间', render: renderAddTime},
+                {field: 'name', name: '名字'},
+                {field: 'department', name: '所在部门'},
+                {field: 'entryTime', name: '入职时间', render: renderTime},
+                {field: 'introduction', name: '自我介绍', style: 'width: 200px;'},
+                {field: 'face', name: '图片', render: renderFace}
+            ],
+            actions: [{
+                type: 'btn',
+                html: '编辑',
+                action: onEdit
+            }, {
+                type: 'btn',
+                html: '删除',
+                action: onDel
+            }],
+            getData: function () {
+                return getCards().then(function (data) {
+                    return _.sortBy(data, function (value) {
+                        return -value.id;
+                    });
+                });
+            }
+        };
+
+        function getCards() {
+            return DataService.Card.getList(area);
+        }
+
+        function renderAddTime(){
+            return '<span ng-bind="data[col.field] | toDate | date:\'yyyy-MM-dd HH:mm\'"></span>';
+        }
+
+        function renderTime() {
+            return '<span ng-bind="data[col.field]"></span>';
         }
 
         function renderFace() {

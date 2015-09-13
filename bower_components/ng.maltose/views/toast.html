@@ -1,5 +1,3 @@
 <div class="maltose-toast-container">
-    <md-toast ng-repeat="t in list" class="md-default-theme">
-        <span ng-bind="t.word"></span>
-    </md-toast>
+    <div class="alert alert-info" ng-repeat="t in list" ng-bind="t.word"></div>
 </div>

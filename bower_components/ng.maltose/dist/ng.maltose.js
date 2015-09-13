@@ -1,5 +1,4 @@
-angular.module('ng.maltose', ['ng', 'ngSanitize','ngMaterial','ng.maltose.sha256', 'ng.maltose.templates']);
-angular.module('ng.maltose.pick', ['ng.maltose']);
+angular.module('ng.maltose', ['ng', 'ngSanitize','ng.maltose.sha256', 'ng.maltose.templates', 'ui.bootstrap']);
 (function () {
     'use strict';
 
@@ -28,179 +27,16 @@ angular.module('ng.maltose.pick', ['ng.maltose']);
         document.body.innerHTML = html;
     }
 })();
-angular.module("ng.maltose.templates", []).run(["$templateCache", function($templateCache) {$templateCache.put("views/apartment.pick.html","<div>\n    <md-autocomplete ng-if=\"!pickChips\" flex required\n                     md-selected-item=\"pick.ngModel\"\n                     md-search-text=\"searchText\"\n                     md-items=\"item in querySearch(searchText)\"\n                     md-no-cache=\"true\"\n                     md-delay=\"500\"\n                     md-item-text=\"item.apartmentName\"\n                     md-autoselect=\"true\"\n                     ng-disabled=\"!pickCommunityId\"\n                     md-floating-label=\"APARTMENT\">\n        <md-item-template>\n            <span md-highlight-text=\"searchText\">{{item.apartmentName}} </span>\n        </md-item-template>\n        <md-not-found>\n            No matches found\n        </md-not-found>\n    </md-autocomplete>\n\n\n    <md-chips ng-if=\"pickChips\" ng-model=\"pick.ngModel\" md-autocomplete-snap md-require-match>\n        <md-autocomplete\n                md-selected-item=\"selectedItem\"\n                md-search-text=\"searchText\"\n                md-items=\"item in querySearch(searchText)\"\n                md-no-cache=\"true\"\n                md-delay=\"500\"\n                md-item-text=\"item.apartmentName\"\n                md-autoselect=\"true\"\n                ng-disabled=\"!pickCommunityId\"\n                placeholder=\"APARTMENT\">\n            <md-item-template>\n                <span md-highlight-text=\"searchText\">{{item.apartmentName}}</span>\n            </md-item-template>\n            <md-not-found>\n                No matches found\n            </md-not-found>\n        </md-autocomplete>\n        <md-chip-template>\n        <span>\n          <strong>{{$chip.apartmentName}}</strong>\n        </span>\n        </md-chip-template>\n    </md-chips>\n</div>");
-$templateCache.put("views/building.pick.html","<div>\n    <md-autocomplete ng-if=\"!pickChips\" flex required\n                     md-selected-item=\"pick.ngModel\"\n                     md-search-text=\"searchText\"\n                     md-items=\"item in querySearch(searchText)\"\n                     md-no-cache=\"true\"\n                     md-delay=\"500\"\n                     md-item-text=\"item.buildingName\"\n                     md-autoselect=\"true\"\n                     ng-disabled=\"!pickCommunityId\"\n                     md-floating-label=\"BUILDING\">\n        <md-item-template>\n            <span md-highlight-text=\"searchText\">{{item.buildingName}} </span>\n        </md-item-template>\n        <md-not-found>\n            No matches found\n        </md-not-found>\n    </md-autocomplete>\n\n\n    <md-chips ng-if=\"pickChips\" ng-model=\"pick.ngModel\" md-autocomplete-snap md-require-match>\n        <md-autocomplete\n                md-selected-item=\"selectedItem\"\n                md-search-text=\"searchText\"\n                md-items=\"item in querySearch(searchText)\"\n                md-no-cache=\"true\"\n                md-delay=\"500\"\n                md-item-text=\"item.buildingName\"\n                md-autoselect=\"true\"\n                ng-disabled=\"!pickCommunityId\"\n                placeholder=\"BUILDING\">\n            <md-item-template>\n                <span md-highlight-text=\"searchText\">{{item.buildingName}}</span>\n            </md-item-template>\n            <md-not-found>\n                No matches found\n            </md-not-found>\n        </md-autocomplete>\n        <md-chip-template>\n        <span>\n          <strong>{{$chip.buildingName}}</strong>\n        </span>\n        </md-chip-template>\n    </md-chips>\n</div>");
-$templateCache.put("views/community.pick.html","<div>\n    <md-autocomplete ng-if=\"!pickChips\" flex required\n                     md-selected-item=\"pick.ngModel\"\n                     md-search-text=\"searchText\"\n                     md-items=\"item in querySearch(searchText)\"\n                     md-no-cache=\"true\"\n                     md-delay=\"500\"\n                     md-item-text=\"item.name\"\n                     md-autoselect=\"true\"\n                     ng-disabled=\"!pickCityId\"\n                     md-floating-label=\"COMMUNITY\">\n        <md-item-template>\n            <span md-highlight-text=\"searchText\">{{item.name}} </span>\n        </md-item-template>\n        <md-not-found>\n            No matches found\n        </md-not-found>\n    </md-autocomplete>\n\n\n    <md-chips ng-if=\"pickChips\" ng-model=\"pick.ngModel\" md-autocomplete-snap md-require-match>\n        <md-autocomplete\n                md-selected-item=\"selectedItem\"\n                md-search-text=\"searchText\"\n                md-items=\"item in querySearch(searchText)\"\n                md-no-cache=\"true\"\n                md-delay=\"500\"\n                md-item-text=\"item.name\"\n                md-autoselect=\"true\"\n                ng-disabled=\"!pickCityId\"\n                placeholder=\"COMMUNITY\">\n            <md-item-template>\n                <span md-highlight-text=\"searchText\">{{item.name}}</span>\n            </md-item-template>\n            <md-not-found>\n                No matches found\n            </md-not-found>\n        </md-autocomplete>\n        <md-chip-template>\n        <span>\n          <strong>{{$chip.name}}</strong>\n        </span>\n        </md-chip-template>\n    </md-chips>\n</div>");
+angular.module("ng.maltose.templates", []).run(["$templateCache", function($templateCache) {$templateCache.put("views/alert.html","<div class=\"modal-header\">\n    <button type=\"button\" class=\"close\" data-dismiss=\"modal\" aria-label=\"Close\" ng-click=\"close()\"><span aria-hidden=\"true\">&times;</span>\n    </button>\n    <h4 class=\"modal-title\" ng-bind=\"title\"></h4>\n</div>\n<div class=\"modal-body\">\n    <p ng-bind=\"content\"></p>\n</div>\n<div class=\"modal-footer\">\n    <button type=\"button\" class=\"btn btn-primary\" ng-click=\"ok()\">确定</button>\n</div>");
+$templateCache.put("views/confirm.html","<div class=\"modal-header\">\n    <button type=\"button\" class=\"close\" data-dismiss=\"modal\" aria-label=\"Close\" ng-click=\"close()\"><span aria-hidden=\"true\">&times;</span>\n    </button>\n    <h4 class=\"modal-title\" ng-bind=\"title\"></h4>\n</div>\n<div class=\"modal-body\">\n    <p ng-bind=\"content\"></p>\n</div>\n<div class=\"modal-footer\">\n    <button class=\"btn btn-default\" type=\"button\" ng-click=\"cancel()\">取消</button>\n    <button type=\"button\" class=\"btn btn-primary\" ng-click=\"ok()\">确定</button>\n</div>");
 $templateCache.put("views/grid.edit.html","<div class=\"maltose-grid-edit\" ng-dblclick=\"onEdit($event)\">\n    <span ng-show=\"!edit\">{{gridModel}}&nbsp;</span>\n    <input type=\"text\" tabindex=\"-1\" ng-model=\"gridModel\" ng-show=\"edit\" ng-blur=\"cancelEdit($event)\" ng-keyup=\"onKey($event)\" maltose-focus-on=\"maltoseGridEditInput\"/>\n</div>");
 $templateCache.put("views/grid.edit.select.html","<div class=\"maltose-grid-edit\" ng-dblclick=\"onEdit($event)\">\n    <span ng-bind=\"gridModel\" ng-show=\"!edit\"></span>\n    <select tabindex=\"-1\" ng-model=\"selected\" ng-show=\"edit\" maltose-focus-on=\"maltoseGridEditSelect\" ng-blur=\"cancelEdit($event)\" ng-options=\"value.name for value in selects\" ng-change=\"onChange($event)\" ng-keyup=\"onKey($event)\">\n    </select>\n</div>");
 $templateCache.put("views/grid.edit.switch.html","<div class=\"maltose-grid-edit\" ng-dblclick=\"onEdit($event)\">\n    <span ng-bind=\"gridModel\" ng-show=\"!(gridEditEver || edit)\"></span>\n\n    <md-switch class=\"md-primary\" tabindex=\"-1\" ng-model=\"gridModel\" aria-label=\"Switch\" maltose-focus-on=\"maltoseGridEditSwitch\" ng-show=\"gridEditEver || edit\" ng-blur=\"cancelEdit($event)\" ng-keyup=\"onKey($event)\" ng-change=\"onChange($event)\"></md-switch>\n\n</div>");
-$templateCache.put("views/grid.html","<div class=\"maltose-grid\">\n    <table class=\"table table-striped table-hover table-condensed\">\n        <thead>\n        <tr>\n            <th ng-if=\"config.enableSelect\" class=\"maltose-grid-select\">\n                <md-checkbox ng-click=\"onCheckAll($event)\"></md-checkbox>\n            </th>\n            <th ng-repeat=\"col in config.columns\" ng-bind=\"col.name\"></th>\n            <th ng-if=\"config.actions.length > 0\">操作</th>\n        </tr>\n        </thead>\n        <tbody>\n        <tr ng-repeat=\"(rowIndex, data) in config.data\">\n            <td ng-if=\"config.enableSelect\" class=\"maltose-grid-select\">\n                <md-checkbox ng-model=\"data._checked\"></md-checkbox>\n            </td>\n            <td ng-repeat=\"(columnIndex, col) in config.columns\" style=\"{{col.style}}\">\n                <span ng-if=\"!col.edit && col.render\">\n                    <div maltose-compile html=\"{{col.render(data[col.field])}}\"></div>\n                </span>\n                <span ng-if=\"!col.edit && !col.render\" ng-bind=\"data[col.field]\"></span>\n\n                <div ng-if=\"col.edit && col.editType === \'input\'\">\n                    <div maltose-grid-edit grid-model=\"data[col.field]\"\n                         grid-after-edit=\"onAfterEdit(value, col, data)\"></div>\n                </div>\n                <div ng-if=\"col.edit && col.editType === \'select\'\">\n                    <div maltose-grid-edit-select grid-model=\"data[col.field]\" grid-edit-type=\"col.editType\"\n                         grid-edit-data=\"col.editData()\" grid-after-edit=\"onAfterEdit(value, col, data)\"></div>\n                </div>\n                <div ng-if=\"col.edit && col.editType === \'switch\'\">\n                    <div maltose-grid-edit-switch grid-model=\"data[col.field]\"\n                         grid-after-edit=\"onAfterEdit(value, col, data)\" grid-edit-ever=\"col.editEver\"></div>\n                </div>\n            </td>\n\n            <td ng-if=\"config.actions.length > 0\">\n                <md-button ng-repeat=\"act in config.actions\" class=\"md-raised {{act.className}}\" ng-bind=\"act.html\"\n                           ng-disabled=\"act.isDisabled(data, config.data, $event)\"\n                           ng-click=\"act.action(data, config.data, $event)\"></md-button>\n            </td>\n        </tr>\n        </tbody>\n    </table>\n    <div layout=\"row\">\n        <md-button class=\"md-raised\" ng-click=\"getData()\" ng-if=\"config.next\">更多</md-button>\n        <md-button class=\"md-raised\" ng-if=\"!config.next\" ng-disabled=\"true\">没有更多</md-button>\n        <div flex ng-if=\"config.enableSelect && config.actions.length > 0\">\n            <md-button ng-repeat=\"act in config.actions\" ng-if=\"act.batch\" class=\"md-raised {{act.className}}\"\n                       ng-bind=\"act.html\"\n                       ng-click=\"onBatch(act, $event)\"></md-button>\n        </div>\n        <div flex layout=\"row\" layout-align=\"end\">\n            <md-button ng-if=\"config.enableExport && config.exportOptions.xls\" ng-click=\"onExport(\'xls\')\">导出xls\n            </md-button>\n            <md-button ng-if=\"config.enableExport && config.exportOptions.csv\" ng-click=\"onExport(\'csv\')\">导出csv\n            </md-button>\n        </div>\n    </div>\n</div>");
+$templateCache.put("views/grid.html","<div class=\"maltose-grid\">\n    <table class=\"table table-striped table-hover table-condensed\">\n        <thead>\n        <tr>\n            <th ng-if=\"config.enableSelect\" class=\"maltose-grid-select\">\n                <input type=\"checkbox\" ng-click=\"onCheckAll($event)\"/>\n            </th>\n            <th ng-repeat=\"col in config.columns\" ng-bind=\"col.name\"></th>\n            <th ng-if=\"config.actions.length > 0\">操作</th>\n        </tr>\n        </thead>\n        <tbody>\n        <tr ng-repeat=\"(rowIndex, data) in config.data\">\n            <td ng-if=\"config.enableSelect\" class=\"maltose-grid-select\">\n                <input type=\"checkbox\" ng-model=\"data._checked\"/>\n            </td>\n            <td ng-repeat=\"(columnIndex, col) in config.columns\" style=\"{{col.style}}\">\n                <span ng-if=\"!col.edit && col.render\">\n                    <div maltose-compile html=\"{{col.render(data[col.field])}}\"></div>\n                </span>\n                <span ng-if=\"!col.edit && !col.render\" ng-bind=\"data[col.field]\"></span>\n\n                <div ng-if=\"col.edit && col.editType === \'input\'\">\n                    <div maltose-grid-edit grid-model=\"data[col.field]\"\n                         grid-after-edit=\"onAfterEdit(value, col, data)\"></div>\n                </div>\n                <div ng-if=\"col.edit && col.editType === \'select\'\">\n                    <div maltose-grid-edit-select grid-model=\"data[col.field]\" grid-edit-type=\"col.editType\"\n                         grid-edit-data=\"col.editData()\" grid-after-edit=\"onAfterEdit(value, col, data)\"></div>\n                </div>\n                <div ng-if=\"col.edit && col.editType === \'switch\'\">\n                    <div maltose-grid-edit-switch grid-model=\"data[col.field]\"\n                         grid-after-edit=\"onAfterEdit(value, col, data)\" grid-edit-ever=\"col.editEver\"></div>\n                </div>\n            </td>\n\n            <td ng-if=\"config.actions.length > 0\">\n                <button ng-repeat=\"act in config.actions\" class=\"btn btn-default btn-xs {{act.className}}\"\n                        ng-bind=\"act.html\"\n                        ng-disabled=\"act.isDisabled(data, config.data, $event)\"\n                        ng-click=\"act.action(data, config.data, $event)\" ng-if=\"act.action\"></button>\n            </td>\n        </tr>\n        </tbody>\n    </table>\n    <div class=\"clearfix\">\n        <div class=\"pull-left\" ng-if=\"config.enablePage\">\n            <button class=\"btn btn-default\" ng-click=\"getData()\" ng-if=\"config.next\">更多</button>\n            <button class=\"btn btn-default\" ng-if=\"!config.next\" ng-disabled=\"true\">没有更多</button>\n        </div>\n        <div class=\"pull-left\" ng-if=\"config.enableSelect && config.actions.length > 0\">\n            <button ng-repeat=\"act in config.actions\" ng-if=\"act.batch\" class=\"btn btn-default {{act.className}}\"\n                    ng-bind=\"act.html\"\n                    ng-click=\"onBatch(act, $event)\"></button>\n        </div>\n        <div class=\"pull-right\">\n            <button class=\"btn btn-default\" ng-if=\"config.enableExport && config.exportOptions.xls\"\n                    ng-click=\"onExport(\'xls\')\">导出xls\n            </button>\n            <button class=\"btn btn-default\" ng-if=\"config.enableExport && config.exportOptions.csv\"\n                    ng-click=\"onExport(\'csv\')\">导出csv\n            </button>\n        </div>\n    </div>\n</div>");
 $templateCache.put("views/progress.html","<div class=\"maltose-progress\" ng-if=\"show\">\n    <md-progress-circular md-mode=\"indeterminate\"></md-progress-circular>\n</div>");
-$templateCache.put("views/prompt.html","<md-dialog>\n    <md-dialog-content>\n        <h2 ng-if=\"config.title\">{{config.title}}</h2>\n        <p>{{config.content}}</p>\n        <md-input-container md-no-float>\n            <input ng-model=\"result\" placeholder=\"\">\n        </md-input-container>\n    </md-dialog-content>\n    <div class=\"md-actions\">\n        <md-button ng-click=\"onCancel()\" class=\"md-primary\">{{config.cancel | uppercase}}</md-button>\n        <md-button ng-click=\"onOk()\" class=\"md-primary\">{{config.ok | lowercase}}</md-button>\n    </div>\n</md-dialog>");
-$templateCache.put("views/region.pick.html","<div>\n    <md-autocomplete ng-if=\"!pickChips\" flex required\n                     md-selected-item=\"pick.ngModel\"\n                     md-search-text=\"searchText\"\n                     md-items=\"item in querySearch(searchText)\"\n                     md-no-cache=\"true\"\n                     md-delay=\"500\"\n                     md-item-text=\"item.name\"\n                     md-autoselect=\"true\"\n                     ng-disabled=\"(needRegionParent && !regionParent)\"\n                     md-floating-label=\"{{name | uppercase}}\">\n        <md-item-template>\n            <span md-highlight-text=\"searchText\">{{item.name}} </span>\n            <small md-highlight-text=\"searchText\">({{item.path}})</small>\n        </md-item-template>\n        <md-not-found>\n            No matches found\n        </md-not-found>\n    </md-autocomplete>\n\n\n    <md-chips ng-if=\"pickChips\" ng-model=\"pick.ngModel\" md-autocomplete-snap md-require-match>\n        <md-autocomplete\n                md-selected-item=\"selectedItem\"\n                md-search-text=\"searchText\"\n                md-items=\"item in querySearch(searchText)\"\n                md-no-cache=\"true\"\n                md-delay=\"500\"\n                md-item-text=\"item.name\"\n                md-autoselect=\"true\"\n                ng-disabled=\"(needRegionParent && !regionParent)\"\n                placeholder=\"{{name | uppercase}}\">\n            <md-item-template>\n                <span md-highlight-text=\"searchText\">{{item.name}}</span>\n                <small md-highlight-text=\"searchText\">({{item.path}})</small>\n            </md-item-template>\n            <md-not-found>\n                No matches found\n            </md-not-found>\n        </md-autocomplete>\n        <md-chip-template>\n        <span>\n          <strong>{{$chip.name}}</strong><small>({{$chip.path}})</small>\n        </span>\n        </md-chip-template>\n    </md-chips>\n</div>");
-$templateCache.put("views/scroll.html","<div class=\"maltose-scroll\">\n    <div ng-show=\"isShow\">\n    <md-button class=\"md-fab md-primary md-mini\" ng-click=\"onTop()\" ng-if=\"top\">\n        t\n    </md-button>\n\n    <md-button class=\"md-fab md-primary md-mini\" ng-click=\"onBottom()\" ng-if=\"bottom\">\n        b\n    </md-button>\n    </div>\n</div>");
-$templateCache.put("views/toast.html","<div class=\"maltose-toast-container\">\n    <md-toast ng-repeat=\"t in list\" class=\"md-default-theme\">\n        <span ng-bind=\"t.word\"></span>\n    </md-toast>\n</div>");}]);
-angular.module('ng.maltose.pick').directive('maltoseApartmentPick', ["$maltosePickService", function ($maltosePickService) {
-    'use strict';
-
-    // 有点复杂，不写注释了
-
-    return {
-        restrict: 'A',
-        replace: true,
-        scope: {
-            pickCommunityId: '=',
-            pickBuildingName: '=',
-            ngModel: '=',
-            pickChips: '='
-        },
-        templateUrl: 'views/apartment.pick.html',
-        controller: ["$scope", function ($scope) {
-            $scope.pickChips = $scope.pickChips || false;
-
-            // 传引用过去
-            $scope.pick = {
-                ngModel: $scope.pickChips ? [] : null
-            };
-
-            $scope.$watch('pick.ngModel', function(newValue){
-                $scope.ngModel = newValue;
-            });
-
-            $scope.querySearch = function (searchText) {
-                return $maltosePickService.getApartmentByWord({
-                    buildingName: $scope.pickBuildingName,
-                    communityId: $scope.pickCommunityId,
-                    keyword: searchText
-                }).then(function (data) {
-                    if ($scope.pickChips) {
-                        return _.filter(data, function (value) {
-                            return !isExist(value, $scope.pick.ngModel);
-                        });
-                    }
-                    return data;
-                });
-            };
-
-            function isExist(item, items) {
-                var result = false;
-                _.each(items, function (value) {
-                    if (value.addressId === item.addressId) {
-                        result = true;
-                    }
-                });
-                return result;
-            }
-        }]
-    };
-}]);
-
-angular.module('ng.maltose.pick').directive('maltoseBuildingPick', ["$maltosePickService", function ($maltosePickService) {
-    'use strict';
-
-    // 有点复杂，不写注释了
-
-    return {
-        restrict: 'A',
-        replace: true,
-        scope: {
-            pickCommunityId: '=',
-            ngModel: '=',
-            pickChips: '='
-        },
-        templateUrl: 'views/building.pick.html',
-        controller: ["$scope", function ($scope) {
-            $scope.pickChips = $scope.pickChips || false;
-
-            // 传引用过去
-            $scope.pick = {
-                ngModel: $scope.pickChips ? [] : null
-            };
-
-            $scope.$watch('pick.ngModel', function(newValue){
-                $scope.ngModel = newValue;
-            });
-
-            $scope.querySearch = function (searchText) {
-                return $maltosePickService.getBuildingByWord({
-                    communityId: $scope.pickCommunityId,
-                    keyword: searchText
-                }).then(function (data) {
-                    if ($scope.pickChips) {
-                        return _.filter(data, function (value) {
-                            return !isExist(value, $scope.pick.ngModel);
-                        });
-                    }
-                    return data;
-                });
-            };
-
-            function isExist(item, items) {
-                var result = false;
-                _.each(items, function (value) {
-                    if (value.buildingName === item.buildingName) {
-                        result = true;
-                    }
-                });
-                return result;
-            }
-        }]
-    };
-}]);
-
-angular.module('ng.maltose.pick').directive('maltoseCommunityPick', ["$maltosePickService", function ($maltosePickService) {
-    'use strict';
-
-    // 有点复杂，不写注释了
-
-    return {
-        restrict: 'A',
-        replace: true,
-        scope: {
-            pickCityId: '=',
-            ngModel: '=',
-            pickChips: '='
-        },
-        templateUrl: 'views/community.pick.html',
-        controller: ["$scope", function ($scope) {
-            $scope.pickChips = $scope.pickChips || false;
-
-            // 传引用过去
-            $scope.pick = {
-                ngModel: $scope.pickChips ? [] : null
-            };
-
-            $scope.$watch('pick.ngModel', function(newValue){
-                $scope.ngModel = newValue;
-            });
-
-            $scope.querySearch = function (searchText) {
-                return $maltosePickService.getCommunityByWord({
-                    cityId: $scope.pickCityId,
-                    keyword: searchText
-                }).then(function (data) {
-                    if ($scope.pickChips) {
-                        return _.filter(data, function (value) {
-                            return !isExist(value, $scope.pick.ngModel);
-                        });
-                    }
-                    return data;
-                });
-            };
-
-            function isExist(item, items) {
-                var result = false;
-                _.each(items, function (value) {
-                    if (value.id === item.id) {
-                        result = true;
-                    }
-                });
-                return result;
-            }
-        }]
-    };
-}]);
-
+$templateCache.put("views/prompt.html","<div class=\"modal-header\">\n    <button type=\"button\" class=\"close\" data-dismiss=\"modal\" aria-label=\"Close\" ng-click=\"close()\"><span\n            aria-hidden=\"true\">&times;</span>\n    </button>\n    <h4 class=\"modal-title\" ng-bind=\"title\"></h4>\n</div>\n<div class=\"modal-body\">\n    <p ng-bind=\"content\"></p>\n\n    <form ng-submit=\"ok()\" novalidate>\n        <input type=\"text\" class=\"form-control\" ng-model=\"word\"/>\n    </form>\n</div>\n<div class=\"modal-footer\">\n    <button class=\"btn btn-default\" type=\"button\" ng-click=\"cancel()\">取消</button>\n    <button type=\"button\" class=\"btn btn-primary\" ng-click=\"ok()\">确定</button>\n</div>");
+$templateCache.put("views/scroll.html","<div class=\"maltose-scroll\">\n    <div>\n        <button class=\"btn btn-default\" ng-click=\"onTop()\" ng-if=\"top\">\n            t\n        </button>\n\n        <button class=\"btn btn-default\" ng-click=\"onBottom()\" ng-if=\"bottom\">\n            b\n        </button>\n    </div>\n</div>");
+$templateCache.put("views/toast.html","<div class=\"maltose-toast-container\">\n    <div class=\"alert alert-info\" ng-repeat=\"t in list\" ng-bind=\"t.word\"></div>\n</div>");}]);
 angular.module('ng.maltose').directive('maltoseCompile', ["$compile", function ($compile) {
     'use strict';
     return {
@@ -294,6 +130,9 @@ angular.module('ng.maltose.grid', ['ng.maltose', 'ng.maltose.exporter']).directi
                     value.afterEdit = value.afterEdit || function () {
                         };
                 }
+            });
+            _.each($scope.config.data, function (value) {
+                value._checked = false;
             });
 
             $scope.config = _.extend({
@@ -569,72 +408,7 @@ angular.module('ng.maltose.grid', ['ng.maltose', 'ng.maltose.exporter']).directi
         }]
     };
 }]);
-angular.module('ng.maltose.pick').directive('maltoseRegionPick', ["$maltosePickService", function ($maltosePickService) {
-    'use strict';
-
-    // 有点复杂，不写注释了
-
-    return {
-        restrict: 'A',
-        replace: true,
-        scope: {
-            regionParent: '=',
-            ngModel: '=',
-            pickChips: '='
-        },
-        templateUrl: 'views/region.pick.html',
-        controller: ["$scope", "$attrs", function ($scope, $attrs) {
-            $scope.pickChips = $scope.pickChips || false;
-
-            // 传引用过去
-            $scope.pick = {
-                ngModel: $scope.pickChips ? [] : null
-            };
-
-            $scope.$watch('pick.ngModel', function(newValue){
-                $scope.ngModel = newValue;
-            });
-
-            $scope.needRegionParent = $attrs.regionParent !== undefined;
-            $scope.name = $attrs.maltoseRegionPick;
-
-            var api = '';
-            if ($scope.name === 'province') {
-                api = 'getProvinceByWord';
-            } else if ($scope.name === 'city') {
-                api = 'getCityByWord';
-            } else if ($scope.name === 'area') {
-                api = 'getAreaByWord';
-            }
-
-            $scope.querySearch = function (searchText) {
-                return $maltosePickService[api]({
-                    parentId: $scope.regionParent && $scope.regionParent.id || null,
-                    keyword: searchText
-                }).then(function (data) {
-                    if ($scope.pickChips) {
-                        return _.filter(data, function (value) {
-                            return !isExist(value, $scope.pick.ngModel);
-                        });
-                    }
-                    return data;
-                });
-            };
-
-            function isExist(item, items) {
-                var result = false;
-                _.each(items, function (value) {
-                    if (value.id === item.id) {
-                        result = true;
-                    }
-                });
-                return result;
-            }
-        }]
-    };
-}]);
-
-angular.module('ng.maltose').directive('maltoseScroll', ["$maltose", "$mdMedia", function ($maltose, $mdMedia) {
+angular.module('ng.maltose').directive('maltoseScroll', ["$maltose", function ($maltose) {
     'use strict';
     return {
         restrict: 'A',
@@ -642,7 +416,6 @@ angular.module('ng.maltose').directive('maltoseScroll', ["$maltose", "$mdMedia",
         scope: {},
         templateUrl: 'views/scroll.html',
         controller: ["$scope", "$element", function ($scope, $element) {
-
             var params = $element.attr('maltose-scroll');
             if (params.indexOf('scroll-top') > -1) {
                 $scope.top = true;
@@ -658,8 +431,6 @@ angular.module('ng.maltose').directive('maltoseScroll', ["$maltose", "$mdMedia",
             $scope.onBottom = function () {
                 $maltose.scroll.bottom();
             };
-
-            $scope.isShow = $mdMedia('gt-md');
         }]
     };
 }]);
@@ -750,57 +521,67 @@ angular.module('ng.maltose').factory('$maltoseFocusOn', ["$rootScope", "$timeout
         });
     };
 }]);
-angular.module('ng.maltose').factory('$maltose', ["$mdDialog", "$mdToast", "$compile", "$rootScope", "$templateRequest", "$timeout", "$maltoseSha256", "$q", function ($mdDialog, $mdToast, $compile, $rootScope, $templateRequest, $timeout, $maltoseSha256, $q) {
+angular.module('ng.maltose').factory('$maltose', ["$modal", "$compile", "$rootScope", "$templateRequest", "$timeout", "$maltoseSha256", "$q", function ($modal, $compile, $rootScope, $templateRequest, $timeout, $maltoseSha256, $q) {
     'use strict';
 
-    var $container = $(document.body);
-
-    var alert = function (word, title, ev) {
-        var d = $mdDialog.alert().parent($container).title(title).content(word).ok('ok');
-        if (ev) {
-            d = d.targetEvent(ev);
-        }
-        return $mdDialog.show(d);
-    };
-    var confirm = function (word, title, ev, ok, cancel) {
-        ok = ok || 'ok';
-        cancel = cancel || 'cancel';
-        var d = $mdDialog.confirm().parent($container).title(title).content(word).ok(ok).cancel(cancel);
-        if (ev) {
-            d = d.targetEvent(ev);
-        }
-        return $mdDialog.show(d);
-    };
-    var prompt = function (word, title, ev, ok, cancel) {
-        ok = ok || 'ok';
-        cancel = cancel || 'cancel';
-        //var d = $mdDialog.confirm().parent($container).title(title).content(word + '<input type="text" />').ok(ok).cancel(cancel);
-        //if (ev) {
-        //    d = d.targetEvent(ev);
-        //}
-        return $mdDialog.show({
-            targetEvent: ev,
-            templateUrl: 'views/prompt.html',
-            controller: ["$scope", "config", function ($scope, config) {
-                $scope.config = config;
-
-                $scope.result = '';
-                $scope.onCancel = function () {
-                    $mdDialog.cancel();
+    var alert = function (opts) {
+        //opts = {content, title, event}
+        return $modal.open({
+            templateUrl: 'views/alert.html',
+            scope: $.extend($rootScope.$new(), opts),
+            controller: ["$scope", "$modalInstance", function ($scope, $modalInstance) {
+                $scope.ok = function () {
+                    $modalInstance.close('ok');
                 };
-                $scope.onOk = function () {
-                    $mdDialog.hide($scope.result);
+                $scope.cancel = function () {
+                    $modalInstance.dismiss('cancel');
+                };
+                $scope.close = function () {
+                    $modalInstance.dismiss('close');
                 };
             }],
-            locals: {
-                config: {
-                    title: title,
-                    content: word,
-                    ok: ok,
-                    cancel: cancel
-                }
-            }
-        });
+            size: 'sm'
+        }).result;
+    };
+
+    var confirm = function (opts) {
+        //opts = {content, title, ev}
+        return $modal.open({
+            templateUrl: 'views/confirm.html',
+            scope: $.extend($rootScope.$new(), opts),
+            controller: ["$scope", "$modalInstance", function ($scope, $modalInstance) {
+                $scope.ok = function () {
+                    $modalInstance.close('ok');
+                };
+                $scope.cancel = function () {
+                    $modalInstance.dismiss('cancel');
+                };
+                $scope.close = function () {
+                    $modalInstance.dismiss('close');
+                };
+            }],
+            size: 'sm'
+        }).result;
+    };
+
+    var prompt = function (opts) {
+        //opts = {content, title, word, ev}
+        return $modal.open({
+            templateUrl: 'views/prompt.html',
+            scope: $.extend($rootScope.$new(), opts),
+            controller: ["$scope", "$modalInstance", function ($scope, $modalInstance) {
+                $scope.ok = function () {
+                    $modalInstance.close($scope.word);
+                };
+                $scope.cancel = function () {
+                    $modalInstance.dismiss('cancel');
+                };
+                $scope.close = function () {
+                    $modalInstance.dismiss('close');
+                };
+            }],
+            size: 'sm'
+        }).result;
     };
 
     var _$toast = null;
@@ -824,7 +605,7 @@ angular.module('ng.maltose').factory('$maltose', ["$mdDialog", "$mdToast", "$com
                 return value._key_ === key;
             })), 1);
             def.resolve({});
-        }, time || 4000);
+        }, time || 3000);
 
         return def.promise;
     };
@@ -923,92 +704,6 @@ angular.module('ng.maltose').factory('$maltose', ["$mdDialog", "$mdToast", "$com
     window.ZL = ZL;
 
     return ZL;
-}]);
-angular.module('ng.maltose.pick').factory('$maltosePickService', ["$q", "$log", "$maltose", function ($q, $log, $maltose) {
-    'use strict';
-
-    var baseUrl = '/admin/';
-
-    function post(url, params) {
-        var def = $q.defer();
-        $.ajax({
-            url: url[0] === '/' ? url : (baseUrl + url),
-            type: 'post',
-            data: params,
-            dataType: 'json',
-            success: function (data) {
-                def.resolve(data);
-            },
-            error: function () {
-                def.reject('服务器错误');
-            }
-        });
-        return processPromise(def.promise);
-    }
-
-    function processPromise(promise) {
-        // 处理http
-        return promise.then(function (data) {
-            if (data.errorCode === 0 || data.errorCode === 200) {
-                return data.response || {}; // 兼容
-            } else {
-                return $q.reject((data.errorDescription || '未知错误') + '  errorCode:' + data.errorCode + '  version:' + data.version);
-            }
-        }, function (reason) {
-            return $q.reject(reason);
-        }).then(function (data) {
-            return data;
-        }, function (reason) {
-            // 错误提示
-            $maltose.tips(reason);
-            return $q.reject(reason);
-        });
-    }
-
-    var dataService = {};
-
-    // region
-    dataService.getProvinceByWord = function (params) {
-        return post('/region/listRegionByKeyword', _.extend(params, {
-            scope: 1
-        }));
-    };
-    dataService.getCityByWord = function (params) {
-        return post('/region/listRegionByKeyword', _.extend(params, {
-            scope: 2
-        }));
-    };
-    dataService.getAreaByWord = function (params) {
-        return post('/region/listRegionByKeyword', _.extend(params, {
-            scope: 3
-        }));
-    };
-    // address
-    dataService.getCommunityByWord = function (params) {
-        return post('/address/searchCommunities', params);
-    };
-    dataService.getBuildingByWord = function (params) {
-        return post('/address/listBuildingsByKeyword', params);
-    };
-    dataService.getApartmentByWord = function (params) {
-        return post('/address/listApartmentsByKeyword', params);
-    };
-
-    // 在封装一层，打印交出去的数据
-    // 同时把params复制一份，避免干扰之前的数据
-
-    var packDataService = {};
-    _.each(dataService, function (value, key) {
-        packDataService[key] = function (params) {
-            return value.apply(this, [angular.copy(params)]).then(function (data) {
-                //$log.info('data.service info: ' + key);
-                //$log.info(data);
-                return angular.copy(data);
-            });
-        };
-    });
-
-    return packDataService;
 }]);
 angular.module('ng.maltose.sha256', []).factory('$maltoseSha256', function () {
     'use strict';

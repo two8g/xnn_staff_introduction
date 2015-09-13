@@ -3,7 +3,7 @@
         <thead>
         <tr>
             <th ng-if="config.enableSelect" class="maltose-grid-select">
-                <md-checkbox ng-click="onCheckAll($event)"></md-checkbox>
+                <input type="checkbox" ng-click="onCheckAll($event)"/>
             </th>
             <th ng-repeat="col in config.columns" ng-bind="col.name"></th>
             <th ng-if="config.actions.length > 0">操作</th>
@@ -12,7 +12,7 @@
         <tbody>
         <tr ng-repeat="(rowIndex, data) in config.data">
             <td ng-if="config.enableSelect" class="maltose-grid-select">
-                <md-checkbox ng-model="data._checked"></md-checkbox>
+                <input type="checkbox" ng-model="data._checked"/>
             </td>
             <td ng-repeat="(columnIndex, col) in config.columns" style="{{col.style}}">
                 <span ng-if="!col.edit && col.render">
@@ -35,26 +35,31 @@
             </td>
 
             <td ng-if="config.actions.length > 0">
-                <md-button ng-repeat="act in config.actions" class="md-raised {{act.className}}" ng-bind="act.html"
-                           ng-disabled="act.isDisabled(data, config.data, $event)"
-                           ng-click="act.action(data, config.data, $event)"></md-button>
+                <button ng-repeat="act in config.actions" class="btn btn-default btn-xs {{act.className}}"
+                        ng-bind="act.html"
+                        ng-disabled="act.isDisabled(data, config.data, $event)"
+                        ng-click="act.action(data, config.data, $event)" ng-if="act.action"></button>
             </td>
         </tr>
         </tbody>
     </table>
-    <div layout="row">
-        <md-button class="md-raised" ng-click="getData()" ng-if="config.next">更多</md-button>
-        <md-button class="md-raised" ng-if="!config.next" ng-disabled="true">没有更多</md-button>
-        <div flex ng-if="config.enableSelect && config.actions.length > 0">
-            <md-button ng-repeat="act in config.actions" ng-if="act.batch" class="md-raised {{act.className}}"
-                       ng-bind="act.html"
-                       ng-click="onBatch(act, $event)"></md-button>
+    <div class="clearfix">
+        <div class="pull-left" ng-if="config.enablePage">
+            <button class="btn btn-default" ng-click="getData()" ng-if="config.next">更多</button>
+            <button class="btn btn-default" ng-if="!config.next" ng-disabled="true">没有更多</button>
         </div>
-        <div flex layout="row" layout-align="end">
-            <md-button ng-if="config.enableExport && config.exportOptions.xls" ng-click="onExport('xls')">导出xls
-            </md-button>
-            <md-button ng-if="config.enableExport && config.exportOptions.csv" ng-click="onExport('csv')">导出csv
-            </md-button>
+        <div class="pull-left" ng-if="config.enableSelect && config.actions.length > 0">
+            <button ng-repeat="act in config.actions" ng-if="act.batch" class="btn btn-default {{act.className}}"
+                    ng-bind="act.html"
+                    ng-click="onBatch(act, $event)"></button>
+        </div>
+        <div class="pull-right">
+            <button class="btn btn-default" ng-if="config.enableExport && config.exportOptions.xls"
+                    ng-click="onExport('xls')">导出xls
+            </button>
+            <button class="btn btn-default" ng-if="config.enableExport && config.exportOptions.csv"
+                    ng-click="onExport('csv')">导出csv
+            </button>
         </div>
     </div>
 </div>

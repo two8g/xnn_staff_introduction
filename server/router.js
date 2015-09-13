@@ -73,6 +73,7 @@
     });
 
     router.post('/card/list', function (req, res) {
+        var area = req.body.area;
         preRes(redisClient.get(getCardsKey()).then(function (data) {
             var arr = [];
             _.each(data, function (id) {
@@ -80,6 +81,11 @@
             });
 
             return when.all(arr).then(function (darr) {
+                if(area){
+                    darr = _.filter(darr, function (value) {
+                        return value.area === area;
+                    });
+                }
                 return darr;
             });
         }), res);
@@ -89,6 +95,7 @@
         var card = JSON.parse(req.body.card || {});
         if (!card.id) {
             card.id = getUniqueId();
+            card.addTime = +new Date();
             var setCardList = redisClient.get(getCardsKey()).then(function (data) {
                 data = data || [];
                 data.push(card.id);

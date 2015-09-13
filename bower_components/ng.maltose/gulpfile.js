@@ -98,21 +98,18 @@
     });
 
     gulp.task('demo', ['demo-templates', 'demo-templates-watch'], function () {
-        var target = gulp.src('demo/index.html');
+        var target = gulp.src('demo/*.html');
         var sources = gulp.src([
             'bower_components/fontawesome/css/font-awesome.css',
-            'bower_components/angular-material/angular-material.css',
             'bower_components/bootstrap/dist/css/bootstrap.css',
-
             'css/*.css',
 
             'bower_components/jquery/dist/jquery.js',
             'bower_components/underscore/underscore-min.js',
             'bower_components/angular/angular.js',
             'bower_components/angular-sanitize/angular-sanitize.js',
-            'bower_components/angular-animate/angular-animate.js',
-            'bower_components/angular-aria/angular-aria.js',
-            'bower_components/angular-material/angular-material.js',
+            'bower_components/angular-bootstrap/ui-bootstrap.js',
+            'bower_components/angular-bootstrap/ui-bootstrap-tpls.js',
             'bower_components/FileSaver/FileSaver.min.js',
 
             'js/compatibility.js',

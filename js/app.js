@@ -6,12 +6,22 @@
 
     angular.module('staffIntroduction', ['ui.router', 'ngMaterial', 'ng.maltose', 'ng.maltose.grid', 'ng.maltose.uploader']).config(function ($stateProvider, $urlRouterProvider) {
 
-        $urlRouterProvider.otherwise('/home');
+        $urlRouterProvider.otherwise('/');
 
-        $stateProvider.state('home', {
-            url: '/home',
+        $stateProvider.state('index', {
+            url: '/',
+            controller: function () {
+
+            },
+            template: '<div>请联系管理员</div>'
+        }).state('home', {
+            url: '/lijirong',
             controller: 'HomeCtrl',
             templateUrl: 'views/home.html'
+        }).state('/area', {
+            url: '/area/:area',
+            controller: 'AreaCtrl',
+            templateUrl: 'views/area.html'
         }).state('result', {
             url: '/result/:card_ids',
             controller: 'ResultCtrl',

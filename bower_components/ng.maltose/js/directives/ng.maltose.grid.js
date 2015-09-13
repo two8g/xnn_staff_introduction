@@ -38,6 +38,9 @@ angular.module('ng.maltose.grid', ['ng.maltose', 'ng.maltose.exporter']).directi
                         };
                 }
             });
+            _.each($scope.config.data, function (value) {
+                value._checked = false;
+            });
 
             $scope.config = _.extend({
                 watchReload: false,

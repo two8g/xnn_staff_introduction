@@ -1,10 +1,11 @@
 <div class="si-home">
     <div class="si-home-container">
 
-        <button class="btn btn-primary" ng-click="addCard()">添加</button>
+        <h3>各子地区</h3>
+
+        <a href="#/area/{{area.id}}" class="btn btn-link" ng-repeat="area in areas" ng-bind="area.name"></a>
 
         <hr/>
-
         <div>
             <div maltose-grid config="gridData"></div>
         </div>

@@ -1,1 +1,1 @@
-window.myModule = angular.module('myApp', ['ng.maltose', 'ng.maltose.grid', 'ng.maltose.uploader', 'ng.maltose.pick']);
+window.myModule = angular.module('myApp', ['ng.maltose', 'ng.maltose.grid', 'ng.maltose.uploader']);

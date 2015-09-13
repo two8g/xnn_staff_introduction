@@ -22,24 +22,39 @@ myModule.controller('UploaderController', function ($scope, $maltoseUploader, $m
     'use strict';
 
     $scope.onAlert = function (event) {
-        $maltose.alert('asdf', 'asdf', event).then(function () {
-            window.console.log('after alert');
+        $maltose.alert({
+            content: '内容哦',
+            title: '小农女提示',
+            event: event
+        }).then(function (data) {
+            window.console.log(data);
+        }, function (reason) {
+            window.console.log(reason);
         });
     };
 
     $scope.onConfirm = function (event) {
-        $maltose.confirm('a', 'bbbb', event).then(function () {
-            window.console.log('after confirm ok');
-        }, function () {
-            window.console.log('after confirm cancel');
+        $maltose.confirm({
+            content: '内容哦',
+            title: '小农女提示',
+            event: event
+        }).then(function (data) {
+            window.console.log(data);
+        }, function (reason) {
+            window.console.log(reason);
         });
     };
 
     $scope.onPrompt = function (event) {
-        $maltose.prompt('a', 'bbbb', event).then(function (word) {
-            window.console.log('after prompt ok' + word);
-        }, function () {
-            window.console.log('after prompt cancel');
+        $maltose.prompt({
+            content: 'adfadf',
+            title: 'adfa',
+            word: 'default',
+            event: event
+        }).then(function (data) {
+            window.console.log(data);
+        }, function (reason) {
+            window.console.log(reason);
         });
     };
 

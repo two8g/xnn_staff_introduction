@@ -1,4 +1,4 @@
-angular.module('ng.maltose').directive('maltoseScroll', function ($maltose, $mdMedia) {
+angular.module('ng.maltose').directive('maltoseScroll', function ($maltose) {
     'use strict';
     return {
         restrict: 'A',
@@ -6,7 +6,6 @@ angular.module('ng.maltose').directive('maltoseScroll', function ($maltose, $mdM
         scope: {},
         templateUrl: 'views/scroll.html',
         controller: function ($scope, $element) {
-
             var params = $element.attr('maltose-scroll');
             if (params.indexOf('scroll-top') > -1) {
                 $scope.top = true;
@@ -22,8 +21,6 @@ angular.module('ng.maltose').directive('maltoseScroll', function ($maltose, $mdM
             $scope.onBottom = function () {
                 $maltose.scroll.bottom();
             };
-
-            $scope.isShow = $mdMedia('gt-md');
         }
     };
 });

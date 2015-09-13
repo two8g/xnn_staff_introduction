@@ -34,8 +34,10 @@
                     ids: JSON.stringify(ids || [])
                 });
             },
-            getAll: function () {
-                return niceAjax('card/list');
+            getList: function (area) {
+                return niceAjax('card/list', {
+                    area: area
+                });
             },
             set: function (card) {
                 return niceAjax('card/set', {

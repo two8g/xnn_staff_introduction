@@ -1,13 +1,17 @@
-<md-dialog>
-    <md-dialog-content>
-        <h2 ng-if="config.title">{{config.title}}</h2>
-        <p>{{config.content}}</p>
-        <md-input-container md-no-float>
-            <input ng-model="result" placeholder="">
-        </md-input-container>
-    </md-dialog-content>
-    <div class="md-actions">
-        <md-button ng-click="onCancel()" class="md-primary">{{config.cancel | uppercase}}</md-button>
-        <md-button ng-click="onOk()" class="md-primary">{{config.ok | lowercase}}</md-button>
-    </div>
-</md-dialog>
+<div class="modal-header">
+    <button type="button" class="close" data-dismiss="modal" aria-label="Close" ng-click="close()"><span
+            aria-hidden="true">&times;</span>
+    </button>
+    <h4 class="modal-title" ng-bind="title"></h4>
+</div>
+<div class="modal-body">
+    <p ng-bind="content"></p>
+
+    <form ng-submit="ok()" novalidate>
+        <input type="text" class="form-control" ng-model="word"/>
+    </form>
+</div>
+<div class="modal-footer">
+    <button class="btn btn-default" type="button" ng-click="cancel()">取消</button>
+    <button type="button" class="btn btn-primary" ng-click="ok()">确定</button>
+</div>

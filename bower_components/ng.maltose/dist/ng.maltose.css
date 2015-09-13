@@ -98,18 +98,13 @@
 }
 
 .maltose-toast-container{
-
     position: fixed;
+    min-width: 250px;
     top: 8px;
     right: 8px;
     left: auto;
     bottom: auto;
     z-index: 20;
-}
-.maltose-toast-container md-toast{
-    position: initial;
-    top: auto;
-    margin-bottom: 8px;
 }
 
 .maltose-btn-upload{

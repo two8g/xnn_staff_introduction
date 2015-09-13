@@ -5,17 +5,19 @@
     <title></title>
     <!-- inject:css -->
     <link rel="stylesheet" href="../bower_components/fontawesome/css/font-awesome.css">
-    <link rel="stylesheet" href="../bower_components/angular-material/angular-material.css">
     <link rel="stylesheet" href="../bower_components/bootstrap/dist/css/bootstrap.css">
+    <link rel="stylesheet" href="../css/iconfont.css">
     <link rel="stylesheet" href="../css/ng.maltose.css">
     <!-- endinject -->
 </head>
 <body>
 
+
 <div ng-controller="GridController">
     <p>名字双击可编辑</p>
 
     <div maltose-grid config="gridData"></div>
+    <button class="btn btn-default" ng-click="reload()">reload</button>
 </div>
 
 <!-- inject:js -->
@@ -23,31 +25,25 @@
 <script src="../bower_components/underscore/underscore-min.js"></script>
 <script src="../bower_components/angular/angular.js"></script>
 <script src="../bower_components/angular-sanitize/angular-sanitize.js"></script>
-<script src="../bower_components/angular-animate/angular-animate.js"></script>
-<script src="../bower_components/angular-aria/angular-aria.js"></script>
-<script src="../bower_components/angular-material/angular-material.js"></script>
+<script src="../bower_components/angular-bootstrap/ui-bootstrap.js"></script>
+<script src="../bower_components/angular-bootstrap/ui-bootstrap-tpls.js"></script>
 <script src="../bower_components/FileSaver/FileSaver.min.js"></script>
 <script src="../js/compatibility.js"></script>
 <script src="../js/common/uploadifive/jquery.uploadifive.min.js"></script>
 <script src="../js/module.js"></script>
-<script src="../js/module.pick.js"></script>
-<script src="../js/directives/ng.maltose.apartment.pick.js"></script>
-<script src="../js/directives/ng.maltose.building.pick.js"></script>
-<script src="../js/directives/ng.maltose.community.pick.js"></script>
 <script src="../js/directives/ng.maltose.compile.js"></script>
 <script src="../js/directives/ng.maltose.dy.compile.js"></script>
 <script src="../js/directives/ng.maltose.focus.on.js"></script>
 <script src="../js/directives/ng.maltose.grid.js"></script>
-<script src="../js/directives/ng.maltose.region.pick.js"></script>
 <script src="../js/directives/ng.maltose.scroll.js"></script>
 <script src="../js/services/ng.maltose.exporter.js"></script>
 <script src="../js/services/ng.maltose.focus.on.js"></script>
 <script src="../js/services/ng.maltose.js"></script>
-<script src="../js/services/ng.maltose.pick.js"></script>
 <script src="../js/services/ng.maltose.sha256.js"></script>
 <script src="../js/services/ng.maltose.uploader.js"></script>
 <script src="templates.js"></script>
 <script src="app.js"></script>
+<script src="index.js"></script>
 <!-- endinject -->
 
 <script>
@@ -63,6 +59,7 @@
         $scope.gridData = {
             enableSelect: true,
             enableExport: true,
+            enablePage: true,
             exportOptions: {xls: true},
             columns: [
                 {field: 'id', name: 'id', render: renderId, style: 'color: red;'},
@@ -96,8 +93,12 @@
             ],
             actions: [{
                 type: 'btn',
-                html: '删除',
+                html: '删除1',
                 action: onDel,
+                isDisabled: isDisabled
+            }, {
+                type: 'btn',
+                html: '删除2',
                 batch: onApproves,
                 isDisabled: isDisabled
             }],
@@ -106,9 +107,9 @@
             }
         };
 
-        $timeout(function () {
+        $scope.reload = function () {
             $scope.gridData.watchReload = true;
-        }, 2000);
+        };
 
         $scope.editData = editData;
         $scope.select = null;

@@ -4,13 +4,13 @@
             <img class="activator" ng-src="{{card.face}}">
         </div>
         <md-card-content>
-            <h2 ng-bind="card.name"></h2>
+            <h3 ng-bind="card.name"></h3>
 
-            <p>所在部门：<span ng-bind="card.department"></span></p>
+            <div>所在部门：<span ng-bind="card.department"></span></div>
 
-            <p>入职时间：<span ng-bind="card.entryTime | date:'yyyy-MM-dd'"></span></p>
+            <div>入职时间：<span ng-bind="card.entryTime | date:'yyyy-MM-dd'"></span></div>
 
-            <p>自我介绍：<span ng-bind="card.introduction"></span></p>
+            <div class="ui-card-introduction">自我介绍：<span ng-bind="card.introduction"></span></div>
         </md-card-content>
     </md-card>
 </div>

@@ -1,54 +1,64 @@
-angular.module('ng.maltose').factory('$maltose', function ($mdDialog, $mdToast, $compile, $rootScope, $templateRequest, $timeout, $maltoseSha256, $q) {
+angular.module('ng.maltose').factory('$maltose', function ($modal, $compile, $rootScope, $templateRequest, $timeout, $maltoseSha256, $q) {
     'use strict';
 
-    var $container = $(document.body);
-
-    var alert = function (word, title, ev) {
-        var d = $mdDialog.alert().parent($container).title(title).content(word).ok('ok');
-        if (ev) {
-            d = d.targetEvent(ev);
-        }
-        return $mdDialog.show(d);
-    };
-    var confirm = function (word, title, ev, ok, cancel) {
-        ok = ok || 'ok';
-        cancel = cancel || 'cancel';
-        var d = $mdDialog.confirm().parent($container).title(title).content(word).ok(ok).cancel(cancel);
-        if (ev) {
-            d = d.targetEvent(ev);
-        }
-        return $mdDialog.show(d);
-    };
-    var prompt = function (word, title, ev, ok, cancel) {
-        ok = ok || 'ok';
-        cancel = cancel || 'cancel';
-        //var d = $mdDialog.confirm().parent($container).title(title).content(word + '<input type="text" />').ok(ok).cancel(cancel);
-        //if (ev) {
-        //    d = d.targetEvent(ev);
-        //}
-        return $mdDialog.show({
-            targetEvent: ev,
-            templateUrl: 'views/prompt.html',
-            controller: function ($scope, config) {
-                $scope.config = config;
-
-                $scope.result = '';
-                $scope.onCancel = function () {
-                    $mdDialog.cancel();
+    var alert = function (opts) {
+        //opts = {content, title, event}
+        return $modal.open({
+            templateUrl: 'views/alert.html',
+            scope: $.extend($rootScope.$new(), opts),
+            controller: function ($scope, $modalInstance) {
+                $scope.ok = function () {
+                    $modalInstance.close('ok');
                 };
-                $scope.onOk = function () {
-                    $mdDialog.hide($scope.result);
+                $scope.cancel = function () {
+                    $modalInstance.dismiss('cancel');
+                };
+                $scope.close = function () {
+                    $modalInstance.dismiss('close');
                 };
             },
-            locals: {
-                config: {
-                    title: title,
-                    content: word,
-                    ok: ok,
-                    cancel: cancel
-                }
-            }
-        });
+            size: 'sm'
+        }).result;
+    };
+
+    var confirm = function (opts) {
+        //opts = {content, title, ev}
+        return $modal.open({
+            templateUrl: 'views/confirm.html',
+            scope: $.extend($rootScope.$new(), opts),
+            controller: function ($scope, $modalInstance) {
+                $scope.ok = function () {
+                    $modalInstance.close('ok');
+                };
+                $scope.cancel = function () {
+                    $modalInstance.dismiss('cancel');
+                };
+                $scope.close = function () {
+                    $modalInstance.dismiss('close');
+                };
+            },
+            size: 'sm'
+        }).result;
+    };
+
+    var prompt = function (opts) {
+        //opts = {content, title, word, ev}
+        return $modal.open({
+            templateUrl: 'views/prompt.html',
+            scope: $.extend($rootScope.$new(), opts),
+            controller: function ($scope, $modalInstance) {
+                $scope.ok = function () {
+                    $modalInstance.close($scope.word);
+                };
+                $scope.cancel = function () {
+                    $modalInstance.dismiss('cancel');
+                };
+                $scope.close = function () {
+                    $modalInstance.dismiss('close');
+                };
+            },
+            size: 'sm'
+        }).result;
     };
 
     var _$toast = null;
@@ -72,7 +82,7 @@ angular.module('ng.maltose').factory('$maltose', function ($mdDialog, $mdToast, 
                 return value._key_ === key;
             })), 1);
             def.resolve({});
-        }, time || 4000);
+        }, time || 3000);
 
         return def.promise;
     };
