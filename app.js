@@ -7,7 +7,7 @@
     var bodyParser = require('body-parser');
     var app = express();
     var config = {
-        port: 22222
+        port: 66666
     };
 
     app.set('views', path.join(__dirname, 'views'));
