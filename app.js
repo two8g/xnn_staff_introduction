@@ -7,7 +7,7 @@
     var bodyParser = require('body-parser');
     var app = express();
     var config = {
-        port: 66666
+        port: 6666
     };
 
     app.set('views', path.join(__dirname, 'views'));
@@ -31,4 +31,4 @@
     app.listen(config.port, function() {
         console.log('Express server listening on port ' + config.port);
     });
-})();
+})();˚
