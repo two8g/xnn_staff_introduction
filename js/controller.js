@@ -19,7 +19,7 @@
                 {field: 'department', name: '所在部门'},
                 {field: 'entryTime', name: '入职时间', render: renderTime},
                 {field: 'introduction', name: '自我介绍', style: 'width: 200px;'},
-                {field: 'face', name: '图片', render: renderFace}
+                {field: 'face', name: '图片', render: renderFace, style: 'width: 200px;'}
             ],
             actions: [{
                 type: 'btn',
@@ -111,7 +111,7 @@
                 {field: 'department', name: '所在部门'},
                 {field: 'entryTime', name: '入职时间', render: renderTime},
                 {field: 'introduction', name: '自我介绍', style: 'width: 200px;'},
-                {field: 'face', name: '图片', render: renderFace}
+                {field: 'face', name: '图片', render: renderFace, style: 'width: 200px;'}
             ],
             actions: [{
                 type: 'btn',
@@ -174,14 +174,14 @@
         }
     });
 
-    module.controller('CardCtrl', function ($scope, DataService, $state, $maltoseUploader, $q) {
+    module.controller('CardCtrl', function ($scope, DataService, $state, $maltoseUploader, $q, $maltose) {
         var cardId = Number($state.params.card_id);
 
         $scope.card = {};
 
         $scope.onSubmit = function () {
             DataService.Card.set($scope.card).then(function (data) {
-                window.alert('保存成功');
+                $maltose.tips('保存成功');
             });
         };
 

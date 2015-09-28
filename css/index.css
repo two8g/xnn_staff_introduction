@@ -1,47 +1,59 @@
-html,body{
+html, body {
     /* background: url(../images/bg.svg); */
     /* background-repeat: repeat; */
     height: auto;
     /* background-color: rgb(123,196,229); */
 }
-.si-container{
-    width: 800px;
-    margin: auto;
+
+.si-container {
+    max-width: 800px;
+    margin: 15px auto;
 }
-.ui-card h3{
+
+.ui-card h3 {
     margin-top: 0;
 }
-.ui-card-img-container{
+
+.ui-card-img-container {
     width: 100%;
-    height: 250px;
+    padding-bottom: 100%;
     overflow: hidden;
     background-color: whitesmoke;
+    position: relative;
 }
-.ui-card-img-container img{
-width: 100%;height: 100%;}
-.ui-card-introduction{
+
+.ui-card-img-container img {
+    width: 100%;
+    height: 100%;
+    position: absolute;
+}
+
+.ui-card-introduction {
     height: 136px;
 }
-.si-home-introduction{
+
+.si-home-introduction {
     width: 200px;
 }
 
-.si-home .ui-card-img-container{
-    width: 100px;
-    height: 80px;
+.si-home .ui-card-img-container {
+    width: 100%;
 }
 
-nav{
-    background-color: rgb(30,178,87);
+nav {
+    background-color: rgb(30, 178, 87);
     padding: 10px;
     color: white;
 }
-.nav-wrapper{
+
+.nav-wrapper {
     text-align: center;
 }
-.nav-logo{
+
+.nav-logo {
     height: 100px;
 }
-.nav-title{
+
+.nav-title {
 
 }

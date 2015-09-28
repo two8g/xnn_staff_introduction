@@ -12,7 +12,7 @@
             },
             templateUrl: 'views/directive/card.html',
             controller: function ($scope) {
-                $scope.card = $scope.ngModel;
+
             }
         };
     });

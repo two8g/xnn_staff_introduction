@@ -1,15 +1,14 @@
 <div class="si-card si-container">
 
     <div layout="row" layout-wrap>
-        <div flex="33">
+        <div flex="90" offset="5" flex-gt-sm="33">
             <div card-directive ng-model="card"></div>
         </div>
-        <div flex="10"></div>
-        <div flex>
+        <div flex="90" offset="5" flex-gt-sm>
             <form name="cardForm" ng-submit="onSubmit()" novalidate>
                 <div class="form-group">
                     <label>头像(可以提供生活照)</label>
-                    <input type="file" class="btn btn-info form-control" id="imgUpload">上传</input>
+                    <input type="file" class="btn btn-info form-control" id="imgUpload" accept="image/*">上传</input>
                 </div>
                 <div class="form-group">
                     <label>名字</label>
@@ -28,7 +27,7 @@
 
                 <div class="form-group">
                     <label>自我介绍(<100字)</label>
-                    <textarea class="form-control" rows="5" name="introduction" ng-model="card.introduction" ng-maxlength="100"></textarea>
+                    <textarea class="form-control" rows="6" name="introduction" ng-model="card.introduction" ng-maxlength="100"></textarea>
                 </div>
 
                 <div ng-show="cardForm.$invalid" class="text-danger">
