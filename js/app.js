@@ -30,6 +30,10 @@
             url: '/card/:card_id',
             controller: 'CardCtrl',
             templateUrl: 'views/card.html'
+        }).state('qiniu', {
+            url: '/qiniu',
+            controller: 'QiniuCtrl',
+            templateUrl: 'views/qiniu.html'
         });
     });
 

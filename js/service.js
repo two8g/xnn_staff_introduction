@@ -8,7 +8,7 @@
             var def = $q.defer();
 
             $.ajax({
-                url: urlBase + url,
+                url: url[0] === '/' ? url : urlBase + url,
                 type: 'post',
                 data: data,
                 success: function (re) {
@@ -48,6 +48,12 @@
                 return niceAjax('card/del', {
                     id: id
                 });
+            }
+        };
+
+        Data.storage = {
+            getToken: function () {
+                return niceAjax('/storage/uptoken');
             }
         };
 

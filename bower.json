@@ -20,8 +20,10 @@
     "bootstrap": "~3.3.5",
     "fontawesome": "~4.4.0",
     "jquery": "~2.1.4",
+    "js-sdk": "https://github.com/qiniu/js-sdk.git#~1.0.9-beta",
     "materialize": "~0.97.0",
     "ng.maltose": "~0.2.3",
+    "plupload": "https://github.com/moxiecode/plupload.git#~2.1.8",
     "ui-router": "~0.2.15",
     "underscore": "~1.8.3"
   }

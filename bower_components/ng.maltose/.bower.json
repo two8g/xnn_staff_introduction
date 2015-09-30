@@ -30,7 +30,6 @@
     "commit": "656aae4132e6c1e218ce3469fb713cfef5a8dc35"
   },
   "_source": "git://github.com/liyatang/ng.maltose.git",
-  "_target": "~0.2.4",
-  "_originalSource": "ng.maltose",
-  "_direct": true
+  "_target": "~0.2.3",
+  "_originalSource": "ng.maltose"
 }
