@@ -234,6 +234,9 @@
                     },
                     Error: function (up, err, errTip) {
                         $maltose.tips(errTip);
+                    },
+                    BeforeUpload: function (up, file) {
+                        $maltose.tips('上传中');
                     }
                 }
             });
