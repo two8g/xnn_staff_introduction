@@ -6,9 +6,9 @@
         </div>
         <div flex="90" offset="5" flex-gt-sm>
             <form name="cardForm" ng-submit="onSubmit()" novalidate>
-                <div class="form-group">
+                <div class="form-group" id="imgUploadContainer">
                     <label>头像(可以提供生活照)</label>
-                    <input type="file" class="btn btn-info form-control" id="imgUpload" accept="image/*">上传</input>
+                    <button type="button" class="btn btn-info btn-block" id="imgUpload">选择图片</button>
                 </div>
                 <div class="form-group">
                     <label>名字</label>

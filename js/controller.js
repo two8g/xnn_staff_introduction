@@ -47,7 +47,7 @@
             return DataService.Card.getList();
         }
 
-        function renderInfo(){
+        function renderInfo() {
             return '<span>' +
                 '<span ng-bind="data[\'id\']"></span><br/>' +
                 '<span ng-bind="data[\'area\']"></span><br/>' +
@@ -63,7 +63,7 @@
             return '<div class="ui-card-img-container"><img ng-src="{{data[col.field]}}" /></div>';
         }
 
-        function onResult(cards){
+        function onResult(cards) {
             window.open($state.href('result', {
                 card_ids: _.map(cards, function (value) {
                     return value.id;
@@ -135,7 +135,7 @@
             return DataService.Card.getList(area);
         }
 
-        function renderAddTime(){
+        function renderAddTime() {
             return '<span ng-bind="data[col.field] | toDate | date:\'yyyy-MM-dd HH:mm\'"></span>';
         }
 
@@ -147,7 +147,7 @@
             return '<div class="ui-card-img-container"><img ng-src="{{data[col.field]}}" /></div>';
         }
 
-        function onResult(cards){
+        function onResult(cards) {
             window.open($state.href('result', {
                 card_ids: _.map(cards, function (value) {
                     return value.id;
@@ -174,7 +174,7 @@
         }
     });
 
-    module.controller('CardCtrl', function ($scope, DataService, $state, $maltoseUploader, $q, $maltose) {
+    module.controller('CardCtrl', function ($scope, DataService, $state, $maltoseUploader, $q, $maltose, $timeout) {
         var cardId = Number($state.params.card_id);
 
         $scope.card = {};
@@ -185,26 +185,55 @@
             });
         };
 
-        $('#imgUpload').on('change', function (e) {
-            readFile(e.target.files[0]).then(function (data) {
-                $scope.card.face = data;
-            });
-        });
+        //$('#imgUpload').on('change', function (e) {
+        //    readFile(e.target.files[0]).then(function (data) {
+        //        $scope.card.face = data;
+        //    });
+        //});
 
 
         DataService.Card.get(cardId).then(function (data) {
             $scope.card = data;
         });
 
-        function readFile(file) {
-            var def = $q.defer();
-            var reader = new FileReader();
-            reader.readAsDataURL(file);
-            reader.onload = function (e) {
-                def.resolve(this.result);
-            };
-            return def.promise;
-        }
+        //function readFile(file) {
+        //    var def = $q.defer();
+        //    var reader = new FileReader();
+        //    reader.readAsDataURL(file);
+        //    reader.onload = function (e) {
+        //        def.resolve(this.result);
+        //    };
+        //    return def.promise;
+        //}
+
+
+        DataService.storage.getToken().then(function (data) {
+            $scope.uptoken = data.uptoken;
+
+            var Qiniu = window.Qiniu;
+
+            var uploader = Qiniu.uploader({
+                runtimes: 'html5',
+                browse_button: 'imgUpload',
+                container: 'imgUploadContainer',
+                drop_element: 'imgUploadContainer',
+                max_file_size: '10mb',
+                chunk_size: '4mb',
+                //uptoken_url: $scope.uptoken,
+                uptoken: data.uptoken,
+                domain: 'http://7xlnio.com1.z0.glb.clouddn.com',
+                get_new_uptoken: false,
+                auto_start: true,
+                init: {
+                    FileUploaded: function (up, file, info) {
+                        var json = JSON.parse(info);
+                        $timeout(function () {
+                            $scope.card.face = up.getOption('domain') + '/' + json.key;
+                        }, 1);
+                    }
+                }
+            });
+        });
 
     });
 
@@ -219,70 +248,29 @@
     module.controller('QiniuCtrl', function ($scope, DataService) {
         DataService.storage.getToken().then(function (data) {
             $scope.uptoken = data.uptoken;
-        });
-        var Qiniu = window.Qiniu;
 
-        var uploader = Qiniu.uploader({
-            runtimes: 'html5,flash,html4',
-            browse_button: 'pickfiles',
-            container: 'container',
-            drop_element: 'container',
-            max_file_size: '100mb',
-            flash_swf_url: 'js/plupload/Moxie.swf',
-            dragdrop: true,
-            chunk_size: '4mb',
-            uptoken_url: $('#uptoken_url').val(),
-            domain: $('#domain').val(),
-            get_new_uptoken: false,
-            // downtoken_url: '/downtoken',
-            // unique_names: true,
-            // save_key: true,
-            // x_vars: {
-            //     'id': '1234',
-            //     'time': function(up, file) {
-            //         var time = (new Date()).getTime();
-            //         // do something with 'time'
-            //         return time;
-            //     },
-            // },
-            auto_start: true,
-            init: {
-                'FilesAdded': function(up, files) {
-                    $('table').show();
-                    $('#success').hide();
-                    plupload.each(files, function(file) {
-                        var progress = new FileProgress(file, 'fsUploadProgress');
-                        progress.setStatus("等待...");
-                        progress.bindUploadCancel(up);
-                    });
-                },
-                'BeforeUpload': function(up, file) {
-                    var progress = new FileProgress(file, 'fsUploadProgress');
-                    var chunk_size = plupload.parseSize(this.getOption('chunk_size'));
-                    if (up.runtime === 'html5' && chunk_size) {
-                        progress.setChunkProgess(chunk_size);
+            var Qiniu = window.Qiniu;
+
+            var uploader = Qiniu.uploader({
+                runtimes: 'html5',
+                browse_button: 'pickfiles',
+                container: 'container',
+                drop_element: 'container',
+                max_file_size: '10mb',
+                chunk_size: '4mb',
+                //uptoken_url: $scope.uptoken,
+                uptoken: data.uptoken,
+                domain: 'http://7xlnio.com1.z0.glb.clouddn.com',
+                get_new_uptoken: false,
+                auto_start: true,
+                init: {
+                    FileUploaded: function (up, file, info) {
+                        console.log(info);
                     }
-                },
-                'UploadProgress': function(up, file) {
-                    var progress = new FileProgress(file, 'fsUploadProgress');
-                    var chunk_size = plupload.parseSize(this.getOption('chunk_size'));
-                    progress.setProgress(file.percent + "%", file.speed, chunk_size);
-                },
-                'UploadComplete': function() {
-                    $('#success').show();
-                },
-                'FileUploaded': function(up, file, info) {
-                    var progress = new FileProgress(file, 'fsUploadProgress');
-                    progress.setComplete(up, info);
-                },
-                'Error': function(up, err, errTip) {
-                    $('table').show();
-                    var progress = new FileProgress(err.file, 'fsUploadProgress');
-                    progress.setError();
-                    progress.setStatus(errTip);
                 }
-            }
+            });
         });
     });
+
 
 })();
