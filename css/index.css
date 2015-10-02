@@ -7,11 +7,26 @@ html, body {
 
 .si-container {
     max-width: 800px;
-    margin: 15px auto;
+    margin: 15px;
 }
 
 .ui-card h3 {
     margin-top: 0;
+}
+
+.ui-md-card {
+    box-sizing: border-box;
+    display: -webkit-flex;
+    display: -ms-flexbox;
+    display: flex;
+    -webkit-flex-direction: column;
+    -ms-flex-direction: column;
+    flex-direction: column;
+    margin: 8px;
+    box-shadow: 0px 3px 1px -2px rgba(0, 0, 0, 0.14), 0px 2px 2px 0px rgba(0, 0, 0, 0.098), 0px 1px 5px 0px rgba(0, 0, 0, 0.084);
+}
+.ui-md-card-content{
+    padding: 16px;
 }
 
 .ui-card-img-container {

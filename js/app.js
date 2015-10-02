@@ -4,7 +4,7 @@
 (function () {
     'use strict';
 
-    angular.module('staffIntroduction', ['ui.router', 'ngMaterial', 'ng.maltose', 'ng.maltose.grid', 'ng.maltose.uploader']).config(function ($stateProvider, $urlRouterProvider) {
+    angular.module('staffIntroduction', ['ui.router', 'ng.maltose', 'ng.maltose.grid', 'ng.maltose.uploader']).config(function ($stateProvider, $urlRouterProvider) {
 
         $urlRouterProvider.otherwise('/');
 

@@ -60,7 +60,7 @@
         }
 
         function renderFace() {
-            return '<div class="ui-card-img-container"><img ng-src="{{data[col.field]}}" /></div>';
+            return '<div class="ui-card-img-container"><img ng-src="{{data[col.field] | imageView}}" /></div>';
         }
 
         function onResult(cards) {
@@ -226,10 +226,14 @@
                 auto_start: true,
                 init: {
                     FileUploaded: function (up, file, info) {
+                        $maltose.tips('上传成功');
                         var json = JSON.parse(info);
                         $timeout(function () {
                             $scope.card.face = up.getOption('domain') + '/' + json.key;
                         }, 1);
+                    },
+                    Error: function (up, err, errTip) {
+                        $maltose.tips(errTip);
                     }
                 }
             });

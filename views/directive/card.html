@@ -1,9 +1,9 @@
 <div class="ui-card">
-    <md-card>
+    <div class="ui-md-card">
         <div class="ui-card-img-container">
-            <img class="activator" ng-src="{{ngModel.face}}">
+            <img class="activator" ng-src="{{ngModel.face | imageView}}">
         </div>
-        <md-card-content>
+        <div class="ui-md-card-content">
             <h3 ng-bind="ngModel.name"></h3>
 
             <div>所在部门：<span ng-bind="ngModel.department"></span></div>
@@ -11,6 +11,6 @@
             <div>入职时间：<span ng-bind="ngModel.entryTime | date:'yyyy-MM-dd'"></span></div>
 
             <div class="ui-card-introduction">自我介绍：<span ng-bind="ngModel.introduction"></span></div>
-        </md-card-content>
-    </md-card>
+        </div>
+    </div>
 </div>

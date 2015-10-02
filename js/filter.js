@@ -6,4 +6,10 @@
             return new Date(input);
         };
     });
+
+    module.filter('imageView', function () {
+        return function (input) {
+            return input + '?imageView2/0/w/400/h/400';
+        };
+    });
 })();
