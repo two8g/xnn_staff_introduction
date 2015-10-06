@@ -72,3 +72,11 @@ nav {
 .nav-title {
 
 }
+
+.si-result-container .si-result{
+    padding-left: 15px;
+    padding-right: 15px;
+}
+.si-result-container .si-result .row>div{
+    padding: 0;
+}
