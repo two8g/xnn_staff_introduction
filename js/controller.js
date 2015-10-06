@@ -19,7 +19,7 @@
                 {field: 'department', name: '所在部门'},
                 {field: 'entryTime', name: '入职时间', render: renderTime},
                 {field: 'introduction', name: '自我介绍', style: 'width: 200px;'},
-                {field: 'face', name: '图片', render: renderFace, style: 'width: 200px;'}
+                {field: 'face', name: '图片', render: renderFace, style: 'width: 100px;'}
             ],
             actions: [{
                 type: 'btn',
