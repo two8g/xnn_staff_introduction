@@ -9,9 +9,15 @@
     <link rel="stylesheet" href="css/index.css?v=2"/>
 </head>
 <body ng-controller="AppCtrl">
-
+<div class="page-header text-center">
+    <h3>小农女员工介绍系统 <small><a href="http://form.mikecrm.com/f.php?t=Gc289z" target="_blank">反馈意见</a></small></h3>
+</div>
 <div ui-view></div>
-
+<div class="text-center text-muted">
+    <hr/>
+    <h4>Powered by <a href="https://github.com/liyatang/" target="_blank">Liyatang</a>. Thanks for <a
+            href="http://www.qiniu.com/" target="_blank">QINIU</a></h4>
+</div>
 <script src="bower_components/jquery/dist/jquery.js"></script>
 <script src="bower_components/underscore/underscore.js"></script>
 <script src="bower_components/angular/angular.js"></script>
@@ -34,6 +40,11 @@
 
 <script src="bower_components/plupload/js/plupload.full.min.js"></script>
 <script src="bower_components/js-sdk/src/qiniu.js"></script>
+
+<script src="bower_components/le_js/product/le.min.js"></script>
+<script>
+    LE.init('0d1f15a5-d6a7-4971-bf41-76d5b4b35951');
+</script>
 
 </body>
 </html>

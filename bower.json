@@ -23,6 +23,7 @@
     "ng.maltose": "~0.2.3",
     "plupload": "https://github.com/moxiecode/plupload.git#~2.1.8",
     "ui-router": "~0.2.15",
-    "underscore": "~1.8.3"
+    "underscore": "~1.8.3",
+    "le_js": "https://github.com/logentries/le_js.git#~0.0.3"
   }
 }
