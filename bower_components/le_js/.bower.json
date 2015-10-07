@@ -1,0 +1,30 @@
+{
+  "name": "le_js",
+  "version": "0.0.3",
+  "homepage": "https://logentries.com",
+  "description": "Javascript library for Logentries.com",
+  "main": "product/le.js",
+  "license": "MIT",
+  "ignore": [
+    "**/.*",
+    "bower_components",
+    "build",
+    "deps",
+    "dyn.xhr",
+    "lib",
+    "node_modules",
+    "src",
+    "test",
+    "gulpfile.js"
+  ],
+  "_release": "0.0.3",
+  "_resolution": {
+    "type": "version",
+    "tag": "0.0.3",
+    "commit": "f68c4ccae598b1ee3da67b8619362e1e0b81ad57"
+  },
+  "_source": "https://github.com/logentries/le_js.git",
+  "_target": "~0.0.3",
+  "_originalSource": "https://github.com/logentries/le_js.git",
+  "_direct": true
+}
