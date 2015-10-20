@@ -4,7 +4,7 @@
             <img class="activator" ng-src="{{ngModel.face | imageView}}">
         </div>
         <div class="ui-md-card-content">
-            <h3 ng-bind="ngModel.name"></h3>
+            <h3 ng-bind="ngModel.name || '&nbsp;'"></h3>
 
             <div>所在部门：<span ng-bind="ngModel.department"></span></div>
 
