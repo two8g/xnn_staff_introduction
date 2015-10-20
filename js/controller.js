@@ -248,6 +248,13 @@
 
         var cardIds = $state.params.card_ids.split(',');
         DataService.Card.gets(cardIds).then(function (data) {
+            if(data.length % 3 === 1){
+                data.push({});
+                data.push({});
+            }else if(data.length % 3 === 2){
+                data.push({});
+            }
+
             $scope.cards = data;
         });
     });
