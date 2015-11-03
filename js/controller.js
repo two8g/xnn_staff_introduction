@@ -288,7 +288,7 @@
 
     module.controller('SignCtrl', function ($scope) {
         $scope.sign = {
-            img: ''
+            img: 'https://raw.githubusercontent.com/liyatang/xnn_staff_introduction/master/images/sign.png',
             name: '李吉荣',
             department: '人力行政中心',
             mobile: '13691928980',

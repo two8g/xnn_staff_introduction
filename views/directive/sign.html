@@ -1,7 +1,7 @@
 <div class="ui-sign">
     <div>
         <div class="ui-sign-img-container">
-            <img class="activator" ng-src="ngModel.img">
+            <img class="activator" ng-src={{ngModel.img}}>
         </div>
         <div class="ui-sign-content">
             <h4 ng-bind="ngModel.name || '&nbsp;'"></h4>
@@ -10,9 +10,8 @@
 
             <div>手机：<span ng-bind="ngModel.mobile"></span></div>
             <div>邮件：<span ng-bind="ngModel.email"></span></div>
-
+            <br/>
             <div ng-bind="ngModel.company || '&nbsp;'"></div>
-
             <div>地址：<strong>深圳市南山区向南瑞峰创业中心A区3066</strong></div>
             <div>微信公众号：<strong>xiaoongnv</strong></div>
             <div>办公电话：<strong>0755-86569156</strong></div>

@@ -86,9 +86,12 @@ nav {
 
 }
 .ui-sign-img-container{
-    width: 100px;
+    width: 80px;
     float: left;
 }
+.ui-sign-img-container img{
+    width: 100%;
+}
 .ui-sign-content{
-    margin-left: 110px;
+    margin-left: 90px;
 }
