@@ -35,7 +35,7 @@
             controller: 'QiniuCtrl',
             templateUrl: 'views/qiniu.html'
         }).state('sign', {
-            url: '/sign',
+            url: '/sign/:area',
             controller: 'SignCtrl',
             templateUrl: 'views/sign.html'
         });

@@ -248,10 +248,10 @@
 
         var cardIds = $state.params.card_ids.split(',');
         DataService.Card.gets(cardIds).then(function (data) {
-            if(data.length % 3 === 1){
+            if (data.length % 3 === 1) {
                 data.push({});
                 data.push({});
-            }else if(data.length % 3 === 2){
+            } else if (data.length % 3 === 2) {
                 data.push({});
             }
 
@@ -286,15 +286,63 @@
         });
     });
 
-    module.controller('SignCtrl', function ($scope) {
+    module.controller('SignCtrl', function ($scope, $state) {
+        //$scope.sign = {
+        //    //img: 'https://raw.githubusercontent.com/liyatang/xnn_staff_introduction/master/images/sign.png',
+        //    img: '../images/sign.png',
+        //    name: '李吉荣',
+        //    department: '人力行政中心',
+        //    mobile: '13691928980',
+        //    email: 'lijirong@xiaonongnv.com'
+        //};
         $scope.sign = {
-            img: 'https://raw.githubusercontent.com/liyatang/xnn_staff_introduction/master/images/sign.png',
-            name: '李吉荣',
-            department: '人力行政中心',
-            mobile: '13691928980',
-            email: 'lijirong@xiaonongnv.com',
-            company: '深圳市小农女供应链有限公司'
+            img: '../images/sign.png'
         };
+
+        $scope.companyMap = {
+            'zb': {
+                name: '深圳市小农女供应链有限公司',
+                address: '深圳市南山区向南瑞峰创业中心A区3066',
+                phone: '0755-86569156'
+            },
+            'lg': {
+                name: '深圳市小农女供应链有限公司龙岗分公司',
+                address: '深圳龙岗区平湖白泥坑社区东泰路1号平湖海吉星大门口对面k10 102 2楼',
+                phone: '0755-86569156'
+            },
+            'gm': {
+                name: '深圳市观麦网络科技有限公司',
+                address: '深圳市南山区阳光华艺大厦1栋11B',
+                phone: '0755-86569156'
+            },
+            'gz': {
+                name: '深圳市小农女供应链有限公司广州分公司',
+                address: '广州市天河区元岗路310号智汇park创意园SOHO OFFICE 901室',
+                phone: '020-32967380'
+            },
+            'dg': {
+                name: '深圳市小农女供应链有限公司东莞分公司',
+                address: '东莞市南城区胜和体育路南侧盈峰商务中心东区505',
+                phone: '0755-86569156'
+            }
+        };
+
+        $scope.sign.companyInfo = $scope.companyMap[$state.params.area];
+
+        $scope.toImg = function () {
+            window.html2canvas(document.getElementById('sign')).then(function (canvas) {
+                canvas.id = 'screenshotCanvas';
+                document.getElementById('imgContainer').appendChild(canvas);
+            });
+            $scope.isToImg = true;
+        };
+
+        $scope.downloadImg = function () {
+            var can = document.getElementById("screenshotCanvas");
+            var imgDataURI = can.toDataURL('image/png');
+            window.open(imgDataURI);
+        };
+
     });
 
 })();

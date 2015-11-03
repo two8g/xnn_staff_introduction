@@ -1,8 +1,9 @@
 <div class="si-card si-container">
-
+    <h3 class="text-center">邮件签名生成器</h3>
+    <hr/>
     <div class="row">
         <div class="col-sm-7">
-            <div sign-directive ng-model="sign"></div>
+            <div sign-directive ng-model="sign" id="sign"></div>
         </div>
         <div class="col-sm-5">
             <form name="cardForm" ng-submit="onSubmit()" novalidate>
@@ -10,8 +11,9 @@
                     <label>姓名</label>
                     <input type="text" class="form-control" ng-model="sign.name"/>
                 </div>
+
                 <div class="form-group">
-                    <label>部门</label>
+                    <label>部门（请向部门老大确认）</label>
                     <input type="text" class="form-control" ng-model="sign.department"/>
                 </div>
 
@@ -21,16 +23,19 @@
                 </div>
 
                 <div class="form-group">
-                    <label>邮件</label>
+                    <label>邮件(企业邮箱)</label>
                     <input type="text" class="form-control" ng-model="sign.email"/>
-                </div>
-
-                <div class="form-group">
-                    <label>公司</label>
-                    <input type="text" class="form-control" ng-model="sign.company"/>
                 </div>
             </form>
         </div>
+    </div>
+    <hr/>
+    <div>
+        <button class="btn btn-success" ng-click="toImg()">点我生成图片</button>
+        <span ng-if="isToImg">在下面的图片右键另存为图片即可 :）</span>
+    </div>
+    <hr/>
+    <div id="imgContainer">
     </div>
 
 </div>
