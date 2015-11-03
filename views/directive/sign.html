@@ -1,20 +1,19 @@
 <div class="ui-sign">
     <div style="">
-        <div class="ui-sign-img-container" style="width: 80px; float: left">
-            <img class="activator" ng-src={{ngModel.img}} style="width: 100%">
+        <div class="ui-sign-img-container">
+            <img class="activator" ng-src={{ngModel.img}}>
         </div>
-        <div class="ui-sign-content" style="margin-left: 90px">
-            <h4>
+        <div class="ui-sign-content">
+            <h5>
                 <strong  ng-bind="ngModel.name || '&nbsp;'"></strong>
-            </h4>
+            </h5>
 
             <div ng-bind="ngModel.department || '&nbsp;'"></div>
 
             <div>手机：<span ng-bind="ngModel.mobile"></span></div>
-            <div>邮件：<span ng-bind="ngModel.email"></span></div>
-            <br/>
+            <div>邮箱：<span ng-bind="ngModel.email"></span></div>
             <div>
-                <h4><strong ng-bind="ngModel.companyInfo.name"></strong></h4>
+                <h5><strong ng-bind="ngModel.companyInfo.name"></strong></h5>
             </div>
             <div>地址：<span ng-bind="ngModel.companyInfo.address"></span></div>
             <div>微信公众号：xiaoongnv</div>

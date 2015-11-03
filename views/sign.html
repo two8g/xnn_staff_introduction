@@ -2,10 +2,10 @@
     <h3 class="text-center">邮件签名生成器</h3>
     <hr/>
     <div class="row">
-        <div class="col-sm-7">
+        <div class="col-sm-6">
             <div sign-directive ng-model="sign" id="sign"></div>
         </div>
-        <div class="col-sm-5">
+        <div class="col-sm-6">
             <form name="cardForm" ng-submit="onSubmit()" novalidate>
                 <div class="form-group">
                     <label>姓名</label>
@@ -23,7 +23,7 @@
                 </div>
 
                 <div class="form-group">
-                    <label>邮件(企业邮箱)</label>
+                    <label>邮箱(企业邮箱)</label>
                     <input type="text" class="form-control" ng-model="sign.email"/>
                 </div>
             </form>
