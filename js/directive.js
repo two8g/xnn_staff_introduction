@@ -17,4 +17,18 @@
         };
     });
 
+    module.directive('signDirective', function(){
+        return {
+            restrict: 'AE',
+            replace: true,
+            scope: {
+                ngModel: '='
+            },
+            templateUrl: 'views/directive/sign.html',
+            controller: function ($scope) {
+
+            }
+        };
+    });
+
 })();

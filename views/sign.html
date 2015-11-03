@@ -1,0 +1,41 @@
+<div class="si-card si-container">
+
+    <div class="row">
+        <div class="col-sm-7">
+            <div sign-directive ng-model="sign"></div>
+        </div>
+        <div class="col-sm-5">
+            <form name="cardForm" ng-submit="onSubmit()" novalidate>
+                <div class="form-group">
+                    <label>姓名</label>
+                    <input type="text" class="form-control" ng-model="sign.name"/>
+                </div>
+                <div class="form-group">
+                    <label>部门</label>
+                    <input type="text" class="form-control" ng-model="sign.department"/>
+                </div>
+
+                <div class="form-group">
+                    <label>手机</label>
+                    <input type="text" class="form-control" ng-model="sign.mobile"/>
+                </div>
+
+                <div class="form-group">
+                    <label>邮件</label>
+                    <input type="text" class="form-control" ng-model="sign.email"/>
+                </div>
+
+                <div class="form-group">
+                    <label>公司</label>
+                    <input type="text" class="form-control" ng-model="sign.company"/>
+                </div>
+
+                <div class="form-group">
+                    <label>地址</label>
+                    <input type="text" class="form-control" ng-model="sign.address"/>
+                </div>
+            </form>
+        </div>
+    </div>
+
+</div>

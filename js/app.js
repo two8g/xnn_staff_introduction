@@ -34,6 +34,10 @@
             url: '/qiniu',
             controller: 'QiniuCtrl',
             templateUrl: 'views/qiniu.html'
+        }).state('sign', {
+            url: '/sign',
+            controller: 'SignCtrl',
+            templateUrl: 'views/sign.html'
         });
     });
 

@@ -286,5 +286,15 @@
         });
     });
 
+    module.controller('SignCtrl', function ($scope) {
+        $scope.sign = {
+            img: ''
+            name: '李吉荣',
+            department: '人力行政中心',
+            mobile: '13691928980',
+            email: 'lijirong@xiaonongnv.com',
+            company: '深圳市小农女供应链有限公司'
+        };
+    });
 
 })();

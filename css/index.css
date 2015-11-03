@@ -80,3 +80,15 @@ nav {
 .si-result-container .si-result .row>div{
     padding: 0;
 }
+
+
+.ui-sign{
+
+}
+.ui-sign-img-container{
+    width: 100px;
+    float: left;
+}
+.ui-sign-content{
+    margin-left: 110px;
+}
