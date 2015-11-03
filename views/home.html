@@ -1,18 +1,33 @@
 <div class="si-home">
     <div class="si-home-container">
-        <div class="page-header text-center">
-            <h3>小农女员工介绍系统 <small><a href="http://form.mikecrm.com/f.php?t=Gc289z" target="_blank">反馈意见</a></small></h3>
-        </div>
 
-        <h3>各子地区</h3>
 
-        <a href="#/area/{{area.id}}" class="btn btn-link" ng-repeat="area in areas" ng-bind="area.name"></a>
-
-        <hr/>
         <div>
-            <div maltose-grid config="gridData"></div>
+            <h4>签名系统</h4>
+            <a href="#/sign/zb" class="btn btn-link">总部</a>
+            <a href="#/sign/lg" class="btn btn-link">龙岗</a>
+            <a href="#/sign/gm" class="btn btn-link">观麦</a>
+            <a href="#/sign/gz" class="btn btn-link">广州</a>
+            <a href="#/sign/dg" class="btn btn-link">东莞</a>
         </div>
+        <hr/>
 
+        <div>
+            <div class="page-header text-center">
+                <h3>小农女员工介绍系统
+                    <small><a href="http://form.mikecrm.com/f.php?t=Gc289z" target="_blank">反馈意见</a></small>
+                </h3>
+            </div>
+
+            <h3>各子地区</h3>
+
+            <a href="#/area/{{area.id}}" class="btn btn-link" ng-repeat="area in areas" ng-bind="area.name"></a>
+
+            <hr/>
+            <div>
+                <div maltose-grid config="gridData"></div>
+            </div>
+        </div>
         <div copyright-directive></div>
     </div>
 </div>
