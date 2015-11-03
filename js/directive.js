@@ -31,4 +31,12 @@
         };
     });
 
+    module.directive('copyrightDirective', function(){
+        return {
+            restrict: 'AE',
+            replace: true,
+            templateUrl: 'views/directive/copyright.html'
+        };
+    });
+
 })();
