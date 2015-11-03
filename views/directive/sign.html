@@ -4,14 +4,18 @@
             <img class="activator" ng-src={{ngModel.img}} style="width: 100%">
         </div>
         <div class="ui-sign-content" style="margin-left: 90px">
-            <h4 ng-bind="ngModel.name || '&nbsp;'"></h4>
+            <h4>
+                <strong  ng-bind="ngModel.name || '&nbsp;'"></strong>
+            </h4>
 
             <div ng-bind="ngModel.department || '&nbsp;'"></div>
 
             <div>手机：<span ng-bind="ngModel.mobile"></span></div>
             <div>邮件：<span ng-bind="ngModel.email"></span></div>
             <br/>
-            <div><h4 ng-bind="ngModel.companyInfo.name"></h4></div>
+            <div>
+                <h4><strong ng-bind="ngModel.companyInfo.name"></strong></h4>
+            </div>
             <div>地址：<span ng-bind="ngModel.companyInfo.address"></span></div>
             <div>微信公众号：xiaoongnv</div>
             <div>办公电话：<span ng-bind="ngModel.companyInfo.phone"></span></div>
