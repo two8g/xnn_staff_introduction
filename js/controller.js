@@ -287,16 +287,16 @@
     });
 
     module.controller('SignCtrl', function ($scope, $state) {
-        //$scope.sign = {
-        //    img: '../images/sign.png',
-        //    name: '李吉荣',
-        //    department: '人力行政中心',
-        //    mobile: '13691928980',
-        //    email: 'lijirong@xiaonongnv.com'
-        //};
         $scope.sign = {
-            img: '../images/sign.png'
+           img: '../images/sign.png',
+           name: '李吉荣',
+           department: '人力行政中心',
+           mobile: '13691928980',
+           email: 'lijirong@xiaonongnv.com'
         };
+        // $scope.sign = {
+        //     img: '../images/sign.png'
+        // };
 
         $scope.companyMap = {
             'zb': {
