@@ -331,22 +331,22 @@
         $scope.toImg = function () {
             var $sign = $('#sign');
 
-            var w = $sign.width();
-            var h = $sign.height();
-
-            //要将 canvas 的宽高设置成容器宽高的 2 倍
-            var canvas = document.createElement("canvas");
-            canvas.id = 'screenshotCanvas';
-            canvas.width = w * 2;
-            canvas.height = h * 2;
-            canvas.style.width = w + "px";
-            canvas.style.height = h + "px";
-            var context = canvas.getContext("2d");
-            // //然后将画布缩放，将图像放大两倍画到画布上
-            context.scale(2, 2);
+            // var w = $sign.width();
+            // var h = $sign.height();
+            //
+            // //要将 canvas 的宽高设置成容器宽高的 2 倍
+            // var canvas = document.createElement("canvas");
+            // canvas.id = 'screenshotCanvas';
+            // canvas.width = w * 2;
+            // canvas.height = h * 2;
+            // canvas.style.width = w + "px";
+            // canvas.style.height = h + "px";
+            // var context = canvas.getContext("2d");
+            // // //然后将画布缩放，将图像放大两倍画到画布上
+            // context.scale(2, 2);
 
             window.html2canvas($sign[0], {
-                canvas: canvas,
+                // canvas: canvas,
                 onrendered: function (canvas) {
                     document.getElementById('imgContainer').appendChild(canvas);
                 }
