@@ -349,6 +349,7 @@
             window.html2canvas($sign[0], {
                 // canvas: canvas,
                 onrendered: function (canvas) {
+                    canvas.id = 'screenshotCanvas';
                     document.getElementById('imgContainer').appendChild(canvas);
                 }
             });
