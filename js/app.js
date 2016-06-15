@@ -15,7 +15,7 @@
             },
             template: '<div>请联系管理员</div>'
         }).state('home', {
-            url: '/lijirong',
+            url: '/bumeiyi',
             controller: 'HomeCtrl',
             templateUrl: 'views/home.html'
         }).state('/area', {
