@@ -287,16 +287,16 @@
     });
 
     module.controller('SignCtrl', function ($scope, $state) {
-        $scope.sign = {
-           img: '../images/sign.png',
-           name: '李吉荣',
-           department: '人力行政中心',
-           mobile: '13691928980',
-           email: 'lijirong@xiaonongnv.com'
-        };
         // $scope.sign = {
-        //     img: '../images/sign.png'
+        //    img: '../images/sign.png',
+        //    name: '李吉荣',
+        //    department: '人力行政中心',
+        //    mobile: '13691928980',
+        //    email: 'lijirong@xiaonongnv.com'
         // };
+        $scope.sign = {
+            img: '../images/sign.png'
+        };
 
         $scope.companyMap = {
             'zb': {
@@ -343,6 +343,7 @@
             // canvas.style.height = h + "px";
             // var context = canvas.getContext("2d");
             // // //然后将画布缩放，将图像放大两倍画到画布上
+            // // context.scale(2, 2);
             // context.scale(2, 2);
 
             window.html2canvas($sign[0], {
