@@ -295,34 +295,38 @@
         //    email: 'lijirong@xiaonongnv.com'
         // };
         $scope.sign = {
-            img: '../images/sign.png'
         };
 
         $scope.companyMap = {
             'zb': {
                 name: '深圳市小农女供应链有限公司',
                 address: '深圳市南山区高新南一路赋安科技大厦B座708',
-                phone: '0755-86569156'
+                phone: '0755-86569156',
+                img: '../images/sign.png'
             },
             'lg': {
                 name: '深圳市小农女供应链有限公司龙岗分公司',
                 address: '深圳市龙岗区平湖街道白泥坑社区东泰路3号K3栋',
-                phone: '0755-86569156'
+                phone: '0755-86569156',
+                img: '../images/sign.png'
             },
             'gm': {
                 name: '深圳市观麦网络科技有限公司',
                 address: '深圳市南山区高新南一路赋安科技大厦B座708',
-                phone: '0755-86569156'
+                phone: '0755-86569156',
+                img: '../images/gm.jpg'
             },
             'gz': {
                 name: '深圳市小农女供应链有限公司广州分公司',
                 address: '广州市天河区元岗北街145号谷裕市场六号棚',
-                phone: '020-32967380'
+                phone: '020-32967380',
+                img: '../images/sign.png'
             },
             'dg': {
                 name: '深圳市小农女供应链有限公司东莞分公司',
                 address: '东莞市南城区胜和体育路南侧盈峰商务中心东区505',
-                phone: '0755-86569156'
+                phone: '0755-86569156',
+                img: '../images/sign.png'
             }
         };
 
