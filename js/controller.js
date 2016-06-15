@@ -301,7 +301,7 @@
         $scope.companyMap = {
             'zb': {
                 name: '深圳市小农女供应链有限公司',
-                address: '深圳市南山区科技园南区赋安科技大厦B座708',
+                address: '深圳市南山区高新南一路赋安科技大厦B座708',
                 phone: '0755-86569156'
             },
             'lg': {
@@ -311,7 +311,7 @@
             },
             'gm': {
                 name: '深圳市观麦网络科技有限公司',
-                address: '深圳市南山区科技园南区高新南一路赋安科技大厦B座708',
+                address: '深圳市南山区高新南一路赋安科技大厦B座708',
                 phone: '0755-86569156'
             },
             'gz': {
@@ -329,10 +329,29 @@
         $scope.sign.companyInfo = $scope.companyMap[$state.params.area];
 
         $scope.toImg = function () {
-            window.html2canvas(document.getElementById('sign')).then(function (canvas) {
-                canvas.id = 'screenshotCanvas';
-                document.getElementById('imgContainer').appendChild(canvas);
+            var $sign = $('#sign');
+
+            var w = $sign.width();
+            var h = $sign.height();
+
+            //要将 canvas 的宽高设置成容器宽高的 2 倍
+            var canvas = document.createElement("canvas");
+            canvas.id = 'screenshotCanvas';
+            canvas.width = w * 2;
+            canvas.height = h * 2;
+            canvas.style.width = w + "px";
+            canvas.style.height = h + "px";
+            var context = canvas.getContext("2d");
+            // //然后将画布缩放，将图像放大两倍画到画布上
+            context.scale(2, 2);
+
+            window.html2canvas($sign[0], {
+                canvas: canvas,
+                onrendered: function (canvas) {
+                    document.getElementById('imgContainer').appendChild(canvas);
+                }
             });
+
             $scope.isToImg = true;
         };
 
@@ -341,7 +360,6 @@
             var imgDataURI = can.toDataURL('image/png');
             window.open(imgDataURI);
         };
-
     });
 
 })();
