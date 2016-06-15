@@ -1,11 +1,11 @@
 <div class="ui-sign">
-    <div style="">
+    <div class="clearfix">
         <div class="ui-sign-img-container">
             <img class="activator" ng-src={{ngModel.img}}>
         </div>
         <div class="ui-sign-content">
             <h5>
-                <strong  ng-bind="ngModel.name || '&nbsp;'"></strong>
+                <strong ng-bind="ngModel.name || '&nbsp;'"></strong>
             </h5>
 
             <div ng-bind="ngModel.department || '&nbsp;'"></div>
@@ -20,7 +20,13 @@
                 <span style="display: block;margin-left: 3em;" ng-bind="ngModel.companyInfo.address"></span></div>
             <div>微信公众号：xiaonongnv2013</div>
             <div>办公电话：<span ng-bind="ngModel.companyInfo.phone"></span></div>
-            <div>小农女·专业食材餐馆配送</div>
         </div>
+    </div>
+    <div style="margin-top: 10px;">
+        愿景：成为中国最大的优质食材配送平台。
+        <br>
+        使命：提升优质农产品供应链效率，让身边的人吃的好一点。
+        <br>
+        价值观：创业精神 正直 尽责 合作
     </div>
 </div>
