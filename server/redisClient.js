@@ -10,7 +10,9 @@
         password: 'xnnredis@2015'
     };
 
-    var redisClient = redis.createClient(config.port, config.host);
+    var redisClient = redis.createClient(config.port, config.host, {
+        'auth_pass': config.password
+    });
 
     exports.get = function (key) {
         return when.promise(function (resolve, reject) {
