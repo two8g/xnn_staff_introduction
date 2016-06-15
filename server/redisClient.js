@@ -6,7 +6,8 @@
 
     var config = {
         post: 6379,
-        host: '127.0.0.1'
+        host: '127.0.0.1',
+        password: 'xnnredis@2015'
     };
 
     var redisClient = redis.createClient(config.port, config.host);
