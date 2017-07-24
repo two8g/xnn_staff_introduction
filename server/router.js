@@ -4,7 +4,7 @@
     var express = require('express');
     var router = express.Router();
     var when = require('when');
-    var redisClient = require('./redisClient');
+    // var redisClient = require('./redisClient');
     var _ = require('underscore');
 
     //function processRes(res){
@@ -56,74 +56,74 @@
         });
     }
 
-    router.post('/card/get', function (req, res) {
-        var id = Number(req.body.id);
-        preRes(redisClient.get(getCardKey(id)), res);
-    });
-
-    router.post('/card/gets', function (req, res) {
-        var ids = JSON.parse(req.body.ids);
-        var arr = [];
-        _.each(ids, function (id) {
-            arr.push(redisClient.get(getCardKey(id)));
-        });
-        preRes(when.all(arr).then(function (re) {
-            return re;
-        }), res);
-    });
-
-    router.post('/card/list', function (req, res) {
-        var area = req.body.area;
-        preRes(redisClient.get(getCardsKey()).then(function (data) {
-            var arr = [];
-            _.each(data, function (id) {
-                arr.push(redisClient.get(getCardKey(id)));
-            });
-
-            return when.all(arr).then(function (darr) {
-                if(area){
-                    darr = _.filter(darr, function (value) {
-                        return value.area === area;
-                    });
-                }
-                return darr;
-            });
-        }), res);
-    });
-
-    router.post('/card/set', function (req, res) {
-        var card = JSON.parse(req.body.card || {});
-        if (!card.id) {
-            card.id = getUniqueId();
-            card.addTime = +new Date();
-            var setCardList = redisClient.get(getCardsKey()).then(function (data) {
-                data = data || [];
-                data.push(card.id);
-                return redisClient.set(getCardsKey(), data);
-            });
-            var setCard = redisClient.set(getCardKey(card.id), card);
-
-            preRes(when.all([
-                setCardList,
-                setCard
-            ]).then(function (re) {
-                return re[1];
-            }), res);
-        } else {
-            preRes(redisClient.set(getCardKey(card.id), card), res);
-        }
-    });
-
-    router.post('/card/del', function (req, res) {
-        var id = Number(req.body.id);
-        preRes(redisClient.get(getCardsKey()).then(function (data) {
-            data = data || [];
-            data = _.reject(data, function (value) {
-                return value === id;
-            });
-            return redisClient.set(getCardsKey(), data);
-        }), res);
-    });
+    // router.post('/card/get', function (req, res) {
+    //     var id = Number(req.body.id);
+    //     preRes(redisClient.get(getCardKey(id)), res);
+    // });
+    //
+    // router.post('/card/gets', function (req, res) {
+    //     var ids = JSON.parse(req.body.ids);
+    //     var arr = [];
+    //     _.each(ids, function (id) {
+    //         arr.push(redisClient.get(getCardKey(id)));
+    //     });
+    //     preRes(when.all(arr).then(function (re) {
+    //         return re;
+    //     }), res);
+    // });
+    //
+    // router.post('/card/list', function (req, res) {
+    //     var area = req.body.area;
+    //     preRes(redisClient.get(getCardsKey()).then(function (data) {
+    //         var arr = [];
+    //         _.each(data, function (id) {
+    //             arr.push(redisClient.get(getCardKey(id)));
+    //         });
+    //
+    //         return when.all(arr).then(function (darr) {
+    //             if(area){
+    //                 darr = _.filter(darr, function (value) {
+    //                     return value.area === area;
+    //                 });
+    //             }
+    //             return darr;
+    //         });
+    //     }), res);
+    // });
+    //
+    // router.post('/card/set', function (req, res) {
+    //     var card = JSON.parse(req.body.card || {});
+    //     if (!card.id) {
+    //         card.id = getUniqueId();
+    //         card.addTime = +new Date();
+    //         var setCardList = redisClient.get(getCardsKey()).then(function (data) {
+    //             data = data || [];
+    //             data.push(card.id);
+    //             return redisClient.set(getCardsKey(), data);
+    //         });
+    //         var setCard = redisClient.set(getCardKey(card.id), card);
+    //
+    //         preRes(when.all([
+    //             setCardList,
+    //             setCard
+    //         ]).then(function (re) {
+    //             return re[1];
+    //         }), res);
+    //     } else {
+    //         preRes(redisClient.set(getCardKey(card.id), card), res);
+    //     }
+    // });
+    //
+    // router.post('/card/del', function (req, res) {
+    //     var id = Number(req.body.id);
+    //     preRes(redisClient.get(getCardsKey()).then(function (data) {
+    //         data = data || [];
+    //         data = _.reject(data, function (value) {
+    //             return value === id;
+    //         });
+    //         return redisClient.set(getCardsKey(), data);
+    //     }), res);
+    // });
 
     module.exports = router;
 })();
