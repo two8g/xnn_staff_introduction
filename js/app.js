@@ -15,7 +15,7 @@
             },
             template: '<div>请联系管理员</div>'
         }).state('home', {
-            url: '/liushaoling',
+            url: '/huangxiaofang',
             controller: 'HomeCtrl',
             templateUrl: 'views/home.html'
         }).state('/area', {
